@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <link rel="stylesheet" href="./css/style.css">
+<body>
+    <main>
+        <h1>CSSメモ</h1>
+        <p>あまり馴染みのないCSSを忘れず使えるようメモ</p>
+        <h2>論理プロパティ</h2>
+        <p>書式の方向に応じて適用される方向が動的に変化</p>
+        <ul>
+          <li>マージン: margin-block-start, margin-inline-end など</li>
+          <li>パディング: padding-block-start, padding-inline-end など</li>
+          <li>ボーダー: border-block-start, border-inline-end など</li>
+          <li>サイズ: inline-size, block-size5</li>
+        </ul>
+        <pre>
+          <code>
+            body {
+              writing-mode: vertical-rl; /* 縦書き（右から左） */
+            }
+            .example1 {
+              margin-inline: 20px; /* 上下の余白 */
+              margin-block: 10px; /* 左右の余白 */
+            }
+          </code>
+        </pre>
+        <div class="example1">
+          <p>論理プロパティ</p>
+        </div>
+        <h2>position: sticky;</h2>
+        <p>親要素の範囲内でスクロールに応じて位置が変わる。ついてきてあるべきところに落ち着くイメージ。</p>
+        <div class="example2">
+          <div>スクロール</div>
+          <p>position: sticky;</p>
+          <div>スクロール</div>
+        </div>
+        <h2>min(変動値, 固定値);　max(変動値, 固定値);　clamp(最小値、推奨値、最大値);</h2>
+        <div class="example3">
+          <p class="ex3-1">min(変動値, 固定値); 最大が1000px</p>
+          <p class="ex3-2">max(変動値, 固定値); 最小が1000px</p>
+          <p class="ex3-3">clamp(最小値、推奨値、最大値);</p>
+        </div>
+        <h2>calc(計算式)</h2>
+        <pre>
+          <code>
+        //親要素が375pxで、子要素が、300pxの時、widthには80%と設定したい。
+        .sample{
+          width: calc(300 / 375 * 100%);
+        }
+        //親要素が375pxで、子要素が、300pxの時、widthには80%と設定したい。最大値は、500pxとしたい。
+        .sample{
+          width: min(calc(300 / 375 * 100%), 500px);
+        }
+        //親要素が375pxで、子要素が、300pxの時、widthには80%と設定し、
+        　最大値は、500px、最小値は300pxとしたい。
+        .sample{
+          width: clamp(300px, calc(300 / 375 * 100%), 500px);
+        }
+          </code>
+        </pre>
+        <h2>:nth-child(odd)、:nth-child(even)</h2>
+        <p>奇数、偶数番目の要素に適用される</p>
+        <h2>:has(クラス名や属性、子要素)</h2>
+        <p>子要素で判断できるので便利</p>
+        <h2>ユーザーアクションを感知する疑似クラス</h2>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td>:hover</td>
+    <td>マウスをホバーされた時のスタイルを指定する</td>
+  </tr>
+  <tr>
+    <td>:checked</td>
+    <td>チェックボックスやラジオボタンがチェックされた時のスタイルを指定する</td>
+  </tr>
+  <tr>
+    <td>:disabled</td>
+    <td>ボタンなど要素が非活性になった時のスタイルを指定する</td>
+  </tr>
+</table>
+<h2>display: flex;</h2>
+<table>
+  <tr>
+    <th>プロパティ</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td>flex-wrap</td>
+    <td>子要素を合わせた大きさが親要素より大きい時に折り返すかどうかを設定する</td>
+  </tr>
+  <tr>
+    <td>flex-direction</td>
+    <td>Flexアイテムの並び方を指定する</td>
+  </tr>
+  <tr>
+    <td>gap</td>
+    <td>Flexアイテムの上下左右の間隔を指定する</td>
+  </tr>
+  <tr>
+    <td>justify-content</td>
+    <td>子要素を水平方向のどのような間隔で並べるかを指定する</td>
+  </tr>
+  <tr>
+    <td>align-items</td>
+    <td>子要素を垂直方向のどのような間隔で並べるかを指定する</td>
+  </tr>
+</table>
+<h3>gap</h3>
+<p>display: flex;、display: grid;が定義された親要素にのみ指定可能。</p>
+<div class="example4">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+</div>
+<h2>grid グリッドレイアウト</h2>
+<div class="example5">
+  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>
+  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>  <div class="example5-item">
+    <img src="./img/grid.jpg" alt="画像：猫じゃらしで遊ぶ猫" width="200">
+    <div class="example5-item-content">
+      <p class="example5-date">20xx.xx.xx</p>
+      <p class="example5-text">テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>
+</div>
+<h2>@media (width >= 〇〇px)</h2>
+<p>書き方がわかりやすくなった。<br>
+  @media (width >= 375px <= 1024px)<br>
+  375px以上1024px以下の時に適用される。以下と同じ。<br>
+  @media (min-width: 375px) and (max-width: 1024px)
+</p>
+<h2>transform</h2>
+<table>
+  <tr>
+    <th>プロパティ</th>
+    <th>説明</th>
+  </tr>
+  <tr>
+    <td>translate</td>
+    <td>要素を水平方向や垂直方向に移動する。</td>
+  </tr>
+  <tr>
+    <td>rotate</td>
+    <td>要素の回転を指定する。</td>
+  </tr>
+  <tr>
+    <td>scale</td>
+    <td>要素をx軸、y軸方向に拡大・縮小する。</td>
+  </tr>
+  <tr>
+    <td>animation</td>
+    <td>要素にアニメーションをつけることができる。</td>
+  </tr>
+  <tr>
+    <td>@keyframes</td>
+    <td>アニメーションの開始から終了するまでの間で、どのような変化をさせるかを指定する。</td>
+  </tr>
+</table>
+<div class="example6">
+  <div class="animation1">アニメーション</div>
+  <div class="animation2">アニメーション</div>
+</div>
+    </main>
+</body>
+</html>

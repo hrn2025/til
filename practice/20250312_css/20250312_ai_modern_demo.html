@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モダンなウェブデザイン - デモサイト</title>
+  <link rel="stylesheet" href="./css/style_ai_modern_demo.css"> <!-- 先ほど作成したCSSをリンク -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="custom-scroll">
+  <!-- ヘッダーセクション -->
+  <header class="clip-mask">
+    <div class="container flex-container justify-between items-center" style="padding-top: var(--space-3); padding-bottom: var(--space-3);">
+      <div class="logo">
+        <h1 class="text-primary">ModernDesign</h1>
+      </div>
+      <nav>
+        <ul class="flex-container" style="gap: var(--space-4); list-style: none;">
+          <li><a href="#features" class="text-primary font-bold" style="text-decoration: none;">特徴</a></li>
+          <li><a href="#services" class="text-primary font-bold" style="text-decoration: none;">サービス</a></li>
+          <li><a href="#gallery" class="text-primary font-bold" style="text-decoration: none;">ギャラリー</a></li>
+          <li><a href="#contact" class="text-primary font-bold" style="text-decoration: none;">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="scroll-section animated-gradient" style="color: white; padding: var(--space-5) 0;">
+    <div class="container">
+      <div class="flex-container flex-column items-center text-center" style="min-height: 70vh; justify-content: center;">
+        <h2 class="hero-text" style="font-size: var(--font-size-xxl); margin-bottom: var(--space-3);">
+          モダンなウェブデザインの<br>すべてを一つのテンプレートで
+        </h2>
+        <p style="font-size: var(--font-size-lg); max-width: 600px; margin-bottom: var(--space-4);">
+          最新のCSSテクニックを使った美しいデザインと
+          優れたユーザー体験を提供します
+        </p>
+        <div class="mt-4">
+          <a href="#features" class="button">詳細を見る</a>
+          <a href="#contact" class="button" style="background-color: transparent; border: 2px solid white; margin-left: var(--space-2);">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特徴セクション -->
+  <section id="features" class="scroll-section" style="padding: var(--space-5) 0;">
+    <div class="container">
+      <h2 class="text-center" style="font-size: var(--font-size-xl); margin-bottom: var(--space-5);">モダンなCSS機能</h2>
+      <div class="grid-container">
+        <div class="card">
+          <div class="aspect-ratio-box">
+            <img src="https://picsum.photos/400/225" alt="フレックスボックスとグリッドレイアウト">
+          </div>
+          <div style="padding: var(--space-3);">
+            <h3>フレックスボックスとグリッド</h3>
+            <p class="mt-2">最新のレイアウト技術を使用して、複雑なデザインを簡単に実現できます。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="aspect-ratio-box">
+            <img src="https://picsum.photos/400/225" alt="CSSアニメーション">
+          </div>
+          <div style="padding: var(--space-3);">
+            <h3>アニメーションと効果</h3>
+            <p class="mt-2">スムーズなトランジションとアニメーションで、ユーザー体験を向上させます。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="aspect-ratio-box">
+            <img src="https://picsum.photos/400/225" alt="CSS変数とカスタムプロパティ">
+          </div>
+          <div style="padding: var(--space-3);">
+            <h3>CSS変数</h3>
+            <p class="mt-2">カスタムプロパティを使用して、テーマを簡単に変更・管理できます。</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="aspect-ratio-box">
+            <img src="https://picsum.photos/400/225" alt="レスポンシブデザイン">
+          </div>
+          <div style="padding: var(--space-3);">
+            <h3>レスポンシブデザイン</h3>
+            <p class="mt-2">モバイルファーストアプローチで、あらゆるデバイスに最適化されています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービスセクション -->
+  <section id="services" class="scroll-section" style="padding: var(--space-5) 0; background-color: rgba(0,0,0,0.03);">
+    <div class="container">
+      <h2 class="text-center" style="font-size: var(--font-size-xl); margin-bottom: var(--space-5);">サービス</h2>
+      <div class="flex-container">
+        <div class="flex-item themed-element">
+          <h3>ウェブデザイン</h3>
+          <p class="mt-2">最新のトレンドを取り入れた、使いやすくて美しいデザインを提供します。</p>
+        </div>
+
+        <div class="flex-item themed-element secondary">
+          <h3>モバイル最適化</h3>
+          <p class="mt-2">あらゆるデバイスで完璧に動作するレスポンシブウェブサイトを構築します。</p>
+        </div>
+
+        <div class="flex-item themed-element accent">
+          <h3>パフォーマンス改善</h3>
+          <p class="mt-2">高速で効率的なウェブサイトで、ユーザー満足度と検索エンジン評価を向上させます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ギャラリーセクション -->
+  <section id="gallery" class="scroll-section" style="padding: var(--space-5) 0;">
+    <div class="container">
+      <h2 class="text-center" style="font-size: var(--font-size-xl); margin-bottom: var(--space-5);">ギャラリー</h2>
+      <div class="auto-grid">
+        <div class="span-2" style="overflow: hidden; border-radius: 8px;">
+          <img src="https://picsum.photos/500/500" alt="ギャラリー画像1" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="overflow: hidden; border-radius: 8px;">
+          <img src="https://picsum.photos/250/250" alt="ギャラリー画像2" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="overflow: hidden; border-radius: 8px;">
+          <img src="https://picsum.photos/250/250" alt="ギャラリー画像3" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="overflow: hidden; border-radius: 8px;">
+          <img src="https://picsum.photos/250/250" alt="ギャラリー画像4" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="span-2" style="overflow: hidden; border-radius: 8px;">
+          <img src="https://picsum.photos/500/500" alt="ギャラリー画像5" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせセクション -->
+  <section id="contact" class="scroll-section" style="padding: var(--space-5) 0; background-color: rgba(0,0,0,0.03);">
+    <div class="container">
+      <div class="flex-container" style="align-items: flex-start;">
+        <div class="flex-item" style="flex: 1 1 400px;">
+          <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--space-4);">お問い合わせ</h2>
+          <p class="mb-4">ご質問やお見積りのご依頼は、お気軽にお問い合わせください。</p>
+          <form style="margin-top: var(--space-4);">
+            <div style="margin-bottom: var(--space-3);">
+              <label for="name" class="font-bold" style="display: block; margin-bottom: var(--space-1);">お名前</label>
+              <input type="text" id="name" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: var(--space-3);">
+              <label for="email" class="font-bold" style="display: block; margin-bottom: var(--space-1);">メールアドレス</label>
+              <input type="email" id="email" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: var(--space-3);">
+              <label for="message" class="font-bold" style="display: block; margin-bottom: var(--space-1);">メッセージ</label>
+              <textarea id="message" rows="5" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+            </div>
+            <div style="margin-top: var(--space-4);">
+              <label class="flex-container items-center" style="cursor: pointer; gap: var(--space-2);">
+                <input type="checkbox" class="custom-checkbox">
+                <span>プライバシーポリシーに同意する</span>
+              </label>
+            </div>
+            <button type="submit" class="button mt-3">送信する</button>
+          </form>
+        </div>
+        <div class="flex-item" style="flex: 1 1 400px;">
+          <div class="card" style="height: 100%; min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="padding: var(--space-4);">
+              <h3 style="margin-bottom: var(--space-3);">お問い合わせ先</h3>
+              <p style="margin-bottom: var(--space-2);">〒123-4567</p>
+              <p style="margin-bottom: var(--space-2);">東京都渋谷区○○町1-2-3</p>
+              <p style="margin-bottom: var(--space-2);">電話番号: 03-1234-5678</p>
+              <p style="margin-bottom: var(--space-2);">メール: info@example.com</p>
+              <div class="mt-4">
+                <a href="#" class="text-primary" style="margin: 0 var(--space-2); text-decoration: none; font-size: var(--font-size-lg);">
+                  <span class="sr-only">Twitter</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                  </svg>
+                </a>
+                <a href="#" class="text-primary" style="margin: 0 var(--space-2); text-decoration: none; font-size: var(--font-size-lg);">
+                  <span class="sr-only">Instagram</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a href="#" class="text-primary" style="margin: 0 var(--space-2); text-decoration: none; font-size: var(--font-size-lg);">
+                  <span class="sr-only">Facebook</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer style="background-color: var(--text-color); color: white; padding: var(--space-4) 0;">
+    <div class="container">
+      <div class="flex-container justify-between">
+        <div>
+          <h3 style="margin-bottom: var(--space-2);">ModernDesign</h3>
+          <p>最新のウェブデザイン技術で<br>あなたのビジネスをサポートします</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: var(--space-2);">サイトマップ</h4>
+          <ul style="list-style: none;">
+            <li><a href="#features" style="color: white; text-decoration: none;">特徴</a></li>
+            <li class="mt-1"><a href="#services" style="color: white; text-decoration: none;">サービス</a></li>
+            <li class="mt-1"><a href="#gallery" style="color: white; text-decoration: none;">ギャラリー</a></li>
+            <li class="mt-1"><a href="#contact" style="color: white; text-decoration: none;">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-4" style="padding-top: var(--space-3); border-top: 1px solid rgba(255,255,255,0.1);">
+        <p>© 2025 ModernDesign. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+h2 {
+  background-color: black;
+  color: white;
+  padding-inline: 10px;
+  font-size: 2rem;
+  margin-top: 80px;
+}
+h3 {
+  background-color: gray;
+  color: white;
+  padding-inline: 10px;
+  font-size: 1.5rem;
+  margin-top: 40px;
+}
+
+
+.example1 {
+  padding-inline: 20px; /* 上下の余白 */
+  padding-block: 10px; /* 左右の余白 */
+  background-color: brown;
+}
+.example2 {
+  height: 100px; /* 画面よりも小さいサイズに */
+  overflow-y: auto; /* スクロール可能にする */
+  position: relative; /* 重要 */
+  border: 1px solid #ccc; /* 境界を可視化 */
+}
+.example2 p {
+  position: sticky;
+  top: 0;
+  background-color: yellow;
+  margin: 0;
+  padding: 10px;
+}
+.example2 div {
+  height: 100px;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  padding: 10px;
+}
+.example3 .ex3-1 {
+  width: min(90vw, 1000px);/*最大1000px*/
+  background-color: aqua;
+  margin-inline: auto;
+}
+.example3 .ex3-2 {
+  width: max(90vw, 1000px);/*最小1000px*/
+  background-color: aqua;
+  margin-inline: auto;
+}
+.example3 .ex3-3 {
+  font-size: clamp(1rem, -1.5rem + 8vw, 3rem);
+}
+.example4 {
+	display: flex;
+    flex-wrap: wrap;
+    row-gap:  20px;
+    column-gap: 50px;
+	width: 400px;
+    height: auto;
+}
+.example4 div {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+.example5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.example5 .example5-item {
+  width: 200px;
+  display: grid;
+  grid-template-rows: auto;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2%;
+  overflow: hidden;
+}
+.example5 .example5-item img {
+  width: 200px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.example5 .example5-item-content {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.example5 .example5-item-content p {
+  margin: 0 8px 8px;
+}
+.example5 .example5-item-content .example5-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+.example5 .example5-item-content .example5-text {
+  font-size: 1rem;
+  color: #000;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.example6 .animation1 {
+	animation-name: fadeIn;
+	animation-duration: 3s;
+}
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(300px);
+  }
+}
+.example6 .animation2 {
+    animation: move 3s ease-in-out;
+}
