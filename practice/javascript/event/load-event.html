@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsのイベントを学ぼう</title>
+</head>
+<body>
+    <script>
+        window.addEventListener('load', () => {
+            const text = document.getElementById('text');
+            text.textContent = 'ありがとう！';
+        });
+    </script>
+    <p id="text">直してね!</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<body>
+    <main>
+        <h1>HTMLタグメモ</h1>
+        <p>あまり馴染みのないタグを忘れず使えるようメモ</p>
+        <h2>figure、figcaption</h2>
+        <figure>
+            <img src="./img/figure.jpg" alt="画像：猫" width="300" height="200" />
+            <figcaption>画像の説明文</figcaption>
+        </figure>
+        <h2>picture、source</h2>
+        <picture>
+            <source srcset="./img/source.jpg" media="(min-width:1000px;)" width="600" height="400" />
+            <img src="./img/figure.jpg" alt="画像：猫" width="300" height="200" />
+        </picture>
+        <h2>form</h2>
+        <form action="/" method="post">
+            <div>
+                <label>
+                    氏名
+                    <input type="text" name="name" id="name" readonly />
+                </label>
+                <label>
+                    年齢
+                    <input type="number" name="age" id="age" min="0" max="100" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    電話番号
+                    <input type="tel" name="phone-number" id="phone-number" required />
+                </label>
+                <label>
+                    メールアドレス
+                    <input type="email" name="mail" id="mail" placeholder="example@example.com" />
+                </label>
+                <label>
+                    パスワード
+                    <input type="password" name="password" id="password" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    男性
+                    <input type="radio" name="gender" id="male" />
+                </label>
+                <label>
+                    女性
+                    <input type="radio" name="gender" id="female" />
+                </label>
+                <label>
+                    その他
+                    <input type="radio" name="gender" id="other" />
+                </label>
+            </div>
+            <div>
+                <label>
+                    お知らせを受け取る
+                    <input type="checkbox" name="direct-message" id="notification" />
+                </label>
+                <label>
+                    その他通知を受け取る
+                    <input type="checkbox" name="direct-message" id="othermessage" />
+                </label>
+            </div>
+            <div>
+                <select name="version" id="version-select">
+                    <optgroup label="1.0" disabled>
+                        <option value="1.0.0">1.0.0</option>
+                        <option value="1.0.1">1.0.1</option>
+                        <option value="1.0.2">1.0.2</option>
+                        <option value="1.0.3">1.0.3</option>
+                    </optgroup>
+                    <optgroup label="2.0">
+                        <option value="2.0.0">2.0.0</option>
+                        <option value="2.0.1">2.0.1</option>
+                        <option value="2.0.2">2.0.2</option>
+                        <option value="2.0.3">2.0.3</option>
+                    </optgroup>
+                </select>
+            </div>
+            <label>
+                <input type="submit" name="submit-btn" id="submit-btn" />
+            </label>
+        </form>
+    </main>
+</body>
+
+</html>

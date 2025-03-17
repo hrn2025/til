@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>addEventListenerを理解しよう!</title>
+</head>
+<body>
+  <section>
+    <h1>問題 - 1</h1>
+    <button id="bell-button">チャイム</button>
+  </section>
+
+  <section>
+    <h1>問題 - 2</h1>
+    <button id="iine-button">いいね</button>
+  </section>
+
+  <script>
+    // 回答 - 1｜ここから
+    const bellButtonElem = document.getElementById('bell-button');
+    bellButtonElem.addEventListener('click', function() {
+      console.log('ピンポーン')
+    })
+    // 回答 - 1｜ここまで
+
+    // 回答 - 2｜ここから
+    const iineButtonElem = document.getElementById('iine-button');
+    iineButtonElem.addEventListener('click', function() { console.log('いいねしました！'); });
+    // 回答 - 2｜ここまで
+  </script>
+</body>
+</html>

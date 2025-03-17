@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>addEventListenerを理解しよう!</title>
+</head>
+<body>
+  <section>
+    <h1>問題</h1>
+    <div>
+      <label for="">changeイベントを体験</label>
+      <input type="text" id="input_text">
+    </div>
+  </section>
+
+  <script>
+    const changeId = document.getElementById('input_text');
+    changeId.addEventListener('change', (event) => { console.log(event.target.value); });
+  </script>
+</body>
+</html>

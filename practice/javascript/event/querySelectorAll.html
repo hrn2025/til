@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM操作について</title>
+</head>
+<body>
+  <h1 id="heading01">初めてのJavaScript</h1>
+  <p class="text">DOMの操作について学びます。学ぶ内容は以下になります。</p>
+  <ul class="list">
+    <li class="list-item">DOMの取得方法</li>
+    <li class="list-item">DOMの新規作成</li>
+    <li class="list-item">DOMの挿入</li>
+    <li class="list-item">DOMの取り除き</li>
+  </ul>
+  <p class="text">これらはよく利用するので、何度でも試して身体に染みつかせましょう！</p>
+
+  <script>
+    const listItem = document.querySelectorAll('.list-item');
+    console.log(listItem);
+    console.log(listItem[2]);
+
+  </script>
+</body>
+</html>

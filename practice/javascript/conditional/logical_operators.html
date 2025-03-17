@@ -1,0 +1,101 @@
+<h1>論理演算子</h1>
+<p>
+  ==  データの型が正しくなくても同じものだと判断されるので使用は避けましょう！
+</p>
+<script>
+
+// const sampleNum = 1;
+// if(sampleNum == 1){
+//     console.log("天才!")
+// } else {
+//     console.log("もう一度！")
+// }
+
+// const sampleNum = 0;
+// if(sampleNum != 1){
+// console.log("天才!")
+// } else {
+// console.log("もう一度！")
+// }
+
+// const sampleNum = 0;
+// if(sampleNum === 0){
+// console.log('グッジョブ！')
+// }else{
+// console.log('直してね！')
+// }
+
+// const sampleNum = 0;
+// if(sampleNum !== 1){
+// console.log('グッジョブ！')
+// }else{
+// console.log('直してね！')
+// }
+
+// const firstNum = 2;
+// const secondNum = 1;
+// if(firstNum > secondNum){
+// console.log('やるじゃん！')
+// }else{
+// console.log('直してね！')
+// }
+
+// const firstNum = 3;
+// const secondNum = 1;
+
+// if(secondNum < firstNum){
+// console.log('やるじゃん！')
+// }else{
+// console.log('直してね！')
+// }
+
+// const sampleNum = 20;
+
+// if( sampleNum >= 20){
+// console.log('Great!')
+// }else{
+// console.log('直してね！')
+// }
+
+// const sampleNum = 19;
+
+// if(sampleNum <= 20) {
+// console.log('Great!')
+// }else{
+// console.log('直してね！')
+// }
+</script>
+
+<h2>論理積 && 全て正しい</h2>
+<h2>論理和 || いずれかが正しい</h2>
+<h2>null合体演算子 ??</h2>
+<p>左側の値がnullまたはundefinedの場合に右の値を返すことができる構文<br>
+    null または undefined ?? ここに返したい値</p>
+<h2>論理OR演算子 ||</h2>
+<p>左辺の値が falsy (false, 0, "", NaN, null, undefined) の場合に右辺の値を返す</p>
+<script>
+// const sampleNum = 19;
+// const samplePerson = "Tom";
+
+// if(sampleNum <=20 && samplePerson === "Tom"){
+// console.log('よくできました！')}
+// else {
+// console.log('直してね！')
+// }
+
+const sampleNum = 19;
+const samplePerson = "Jenny";
+
+if(sampleNum >= 20 || samplePerson === "Jenny"){
+  console.log("よくできました！")
+}else{
+  console.log("直してね！")
+}
+
+let greeting;
+
+greeting = undefined ?? "頑張ったね！" ;
+// greeting = null || "頑張ったね！" ;
+console.log(greeting);
+
+</script>
