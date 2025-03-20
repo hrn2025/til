@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <p>「1つの関数」には、「1つのことを処理する」だけに留めましょう。<br>
+    関数に名前をつける時につけにくさを感じた場合<br>
+    その関数は色々な処理が含まれている可能性があります。</p>
+  <button id="button">メッセージを呼び出す</button>
+
+  <!-- JavaScript -->
+  <script>
+    // 回答を記載
+    // const button  = document.getElementById('button');
+    // button.addEventListener('click', ()=> {
+    // function message() {
+    //     console.log('初めての関数');
+    // }
+    // message();
+    // });
+
+    const buttonElem  = document.getElementById('button');
+
+    function message() {
+        console.log('初めての関数');
+    }
+
+    buttonElem.addEventListener('click', function() {
+    message();
+    });
+  </script>
+</body>
+</html>

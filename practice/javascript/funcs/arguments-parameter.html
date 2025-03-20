@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <input id="input" type="text" />
+  <button id="button">計算</button>
+  <p>税込価格: <span id="text"></span></p>
+
+  <!-- JavaScript -->
+  <script>
+    // 回答を記載
+    const buttonElem = document.getElementById('button');
+    const textElem = document.getElementById('text');
+    const inputElem = document.getElementById('input');
+    let tax = 1.1;
+
+    function calcFloorTax(value) {
+      let priceIncludingTax = Math.floor(value * tax);
+      textElem.textContent = priceIncludingTax + '円';
+      textElem.style.color = 'black';
+    };
+
+    function errorMessage(string) {
+      textElem.textContent = string;
+      textElem.style.color = 'red';
+    };
+
+    buttonElem.addEventListener('click', () => {
+      const inputValue = Number(inputElem.value);
+      Number.isNaN(inputValue) ? errorMessage("※半角数字を入力してください") : calcFloorTax(inputValue);
+    });
+  </script>
+</body>
+
+</html>

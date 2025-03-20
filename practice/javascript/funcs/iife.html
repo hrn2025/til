@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <input id="input-email" type="email" value="sample@gmail.com">
+  <input id="input-password" type="password" value="password">
+
+  <!-- JavaScript -->
+  <script>
+    // 回答を記載
+(function(email,password) {
+    const emailElem = document.getElementById(email);
+    const passwordElem = document.getElementById(password);
+
+    emailElem.value = "";
+    passwordElem.value = "";
+
+})('input-email','input-password');
+
+
+
+    // const inputEmail = document.getElementById('input-email');
+    // const inputPassword = document.getElementById('input-password');
+
+    // (function(){
+    //     function resetInputValue(elem) {
+    //         elem.value = "";
+    //     };
+    //     if (inputEmail) {
+    //         resetInputValue(inputEmail);
+    //     };
+    //     if (inputPassword) {
+    //         resetInputValue(inputPassword);
+    //     };
+
+    // })(inputEmail,inputPassword);
+
+
+
+  </script>
+</body>
+</html>

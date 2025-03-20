@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <p id="text"></p>
+  <button id="button">CLICK</button>
+
+  <!-- JavaScript -->
+<script>
+    // 以下のJSを修正しましょう
+    const buttonElem = document.getElementById("button");
+    const textElem = document.getElementById("text");
+    const flag = true;
+
+    function drawText(message) {
+        textElem.innerText = message;
+    }
+
+    button.addEventListener('click', function () {
+        if (flag) {
+            const message = "スコープの概念が理解できた！"
+            drawText(message);
+        }
+    })
+    // const buttonElem = document.getElementById("button");
+    // const flag = true;
+
+    // function drawText(textElem, message) {
+    //     textElem.innerText = message;
+    // }
+
+    // button.addEventListener('click', function () {
+    //     const textElem = document.getElementById("text");
+    //     const message = "スコープの概念が理解できた！"
+
+    //     if (flag) {
+    //         const textElem = document.getElementById("text");
+    //         drawText(textElem, message);
+    //     }
+    // })
+</script>
+</body>
+</html>

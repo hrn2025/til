@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <div>
+    <input type="text" id="input-anime">
+    <button id="button-draw-anime" type="button">好きなアニメタイトルを描画</button>
+    <p id="result-anime"></p>
+  </div>
+  <div>
+    <input type="text" id="input-recent">
+    <button id="button-draw-recent" type="button">最近のことを描画</button>
+    <p id="result-recent"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // 回答を記載
+
+const inputAnime = document.getElementById('input-anime');
+const buttonDrawAnime = document.getElementById('button-draw-anime');
+const resultAnime = document.getElementById('result-anime');
+
+const inputRecent = document.getElementById('input-recent');
+const buttonDrawRecent = document.getElementById('button-draw-recent');
+const resultRecent = document.getElementById('result-recent');
+
+function getInputValue(elem) {
+  value = elem.value;
+  return value;
+};
+
+function drawResult (elem, value) {
+  elem.textContent = value;
+};
+
+buttonDrawAnime.addEventListener('click', ()=> {
+  const inputValue = getInputValue(inputAnime);
+  drawResult (resultAnime, inputValue);
+});
+
+buttonDrawRecent.addEventListener('click', ()=> {
+  const inputValue = getInputValue(inputRecent);
+  drawResult (resultRecent, inputValue);
+});
+
+
+
+    // ↑やり直し
+    // const buttonAnime = document.getElementById('button-draw-anime');
+    // const buttonRecent = document.getElementById('button-draw-recent');
+
+    // function getInputText(inputId) {
+    //     return inputId.value;
+    // };
+
+    // function displayText(inputId, resultId) {
+    //     resultId.textContent = getInputText(inputId);
+    //     return resultId.textContent;
+    // };
+
+    // buttonAnime.addEventListener('click', function() {
+    //     const inputAnime = document.getElementById('input-anime');
+    //     const resultAnime = document.getElementById('result-anime');
+    //     displayText(inputAnime, resultAnime);
+    // });
+
+    // buttonRecent.addEventListener('click', function() {
+    //     const inputRecent = document.getElementById('input-recent');
+    //     const resultRecent = document.getElementById('result-recent');
+    //     displayText(inputRecent, resultRecent);
+    // });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数について</title>
+</head>
+<body>
+  <!-- HTML -->
+  <h1 id="heading01">関数について</h1>
+  <div>
+    <input type="text" id="input-anime">
+    <button id="button-draw-anime" type="button">好きなアニメタイトルを描画</button>
+    <p id="result-anime"></p>
+  </div>
+  <div>
+    <input type="text" id="input-recent">
+    <button id="button-draw-recent" type="button">最近のことを描画</button>
+    <p id="result-recent"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // 回答を記載
+
+    // 好きなアニメタイトル
+    const inputAnime = document.getElementById('input-anime');
+    const buttonDrawAnime = document.getElementById('button-draw-anime');
+    const resultAnime = document.getElementById('result-anime');
+
+    // 最近のこと
+    const inputRecent = document.getElementById('input-recent');
+    const buttonDrawRecent = document.getElementById('button-draw-recent');
+    const resultRecent = document.getElementById('result-recent');
+
+    // inputで入力された値を取得
+    function getInputValue(elem) {
+      return elem.value;
+    }
+
+    // resultに値を描画
+    function drawResult(elem, value) {
+      elem.textContent = value;
+    }
+
+    // 好きなアニメタイトルを描画
+    buttonDrawAnime.addEventListener('click', function() {
+      // inputで入力された値を取得
+      const inputValue = getInputValue(inputAnime);
+      drawResult(resultAnime, inputValue);
+    })
+
+    // 最近のことを描画
+    buttonDrawRecent.addEventListener('click', function() {
+      // inputで入力された値を取得
+      const inputValue = getInputValue(inputRecent);
+      drawResult(resultRecent, inputValue);
+    })
+  </script>
+</body>
+</html>
