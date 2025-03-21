@@ -1,0 +1,21 @@
+<script>
+    const study = ["国語","算数","社会","理科","英語"]
+    console.log(study.length)
+</script>
+
+
+<h1>map構文</h1>
+<p>実行後の結果を配列データとして返してくれる</p>
+<pre><code>
+配列を定義した定数または変数.map(function(好きな定数名){
+    return 行いたい処理
+})
+</code></pre>
+
+<script>
+    const taxFree = [1000,8000,24000,33000]
+    const addTax = taxFree.map((item) =>{
+        return Math.trunc(item * 1.1);
+    });
+    console.log(addTax)
+</script>

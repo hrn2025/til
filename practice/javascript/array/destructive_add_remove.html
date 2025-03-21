@@ -1,0 +1,28 @@
+<script>
+  const subjectList = ["算数","理科","社会","英語"]
+  console.log(subjectList.unshift("国語")+"教科");
+  console.log(subjectList)
+
+  const holidayList = ["元日","成人の日","建国記念の日"]
+  holidayList.push("天皇誕生日")
+  console.log(holidayList)
+
+  const sampleArray = ["やるじゃん！！","惜しい","違うね","もう一声"]
+  const result = sampleArray.shift()
+  console.log(result)
+  console.log(sampleArray)
+
+  const sampleArray2 = ["やるじゃん！！","惜しい","違うね","正解！！"]
+  const result2 = sampleArray2.pop()
+  console.log(result2)
+  console.log(sampleArray2)
+
+  const birdList = ["にわとり","すずめ","ひよこ","ひよこ","ひよこ","つばめ","わし"]
+  const result3 = birdList.slice(2,5)
+  console.log(result3)
+
+  const numberArray = [1,2,3,4,5,6,7,8]
+  const result4 = numberArray.filter((item) => item % 2 === 0 )
+  console.log(result4)
+
+</script>

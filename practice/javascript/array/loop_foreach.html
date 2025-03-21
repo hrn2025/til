@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-forEach文</title>
+</head>
+<body>
+    <main>
+        <ul id="books"></ul>
+    </main>
+    <script>
+      // ここのソースコードを変更
+      const bookList = ["吾輩は猫である","山月記","蜘蛛の糸","人間失格","ビルマの竪琴"]
+      const books = document.getElementById("books")
+
+      bookList.forEach(function(item){
+        const li = document.createElement("li");
+        books.append(li);
+        li.innerText = item;
+      });
+
+    </script>
+</body>
+</html>

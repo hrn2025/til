@@ -32,6 +32,11 @@
     const resultRecent = document.getElementById('result-recent');
 
     const getInputValue = elem => elem.value;
+    //アロー関数は、function キーワード、()、{}、return キーワードを省略できる。引数1個のときは()も不要
+    // (引数1, 引数2, ...) => 式
+    // const getInputValue = function (elem) {
+    //   return elem.value;
+    // };
 
     const drawResult = (elem, value) => {
         elem.textContent = value;
