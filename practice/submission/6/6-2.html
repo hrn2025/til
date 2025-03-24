@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        const personList = [18,20,45,19,10,25];
+        const adults = personList.filter(age => age >= 18);
+        const result = document.getElementById('result');
+        result.innerText = `${adults.length}人`;
+    </script>
+</body>
+</html>

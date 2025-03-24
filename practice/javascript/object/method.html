@@ -1,0 +1,28 @@
+<script>
+const recipe = {
+    title: "チョコレートチップクッキー",
+    ingredients: ["小麦粉","砂糖","バター","チョコレートチップ","卵","ベーキングパウダー","バニラエッセンス"],
+    instructions: [
+"バターと砂糖を混ぜ、卵とバニラエッセンスを加えてよく混ぜる。",
+"小麦粉とベーキングパウダーを合わせ、バターと砂糖に加えてよく混ぜる。",
+"チョコレートチップを生地に混ぜる。",
+"生地をクッキーシートにスプーンで落とし、オーブンで焼く。",
+"オーブンから取り出して冷ます。"],
+print: function() {
+    const text1 = `レシピ: ${recipe.title}`+'\n';
+    const text2 = `材料:`+'\n';
+    const text3 = `調理手順:`+'\n';
+    console.log(text1);
+    console.log(text2);
+    recipe.ingredients.forEach (function(value){
+        console.log(`- ${value}`);
+    });
+    console.log(text3);
+    recipe.instructions.forEach (function(value,i){
+        i = i + 1;
+        console.log(`${i}. ${value}`);
+    });
+}
+}
+recipe.print();
+</script>

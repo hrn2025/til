@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+        const bookList = ["武器よさらば","悲しみよこんにちは","怒りのぶどう","エデンの東"]
+        const newBook = "カラマーゾフの兄弟"
+        bookList.push(newBook);
+        const selectedBooks = bookList.slice(1,5);
+        const list = document.getElementById('list');
+
+        const listItems = selectedBooks.map(book => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${book}1冊`;
+            return listItem;
+        });
+
+        list.append(...listItems);
+
+    </script>
+</body>
+</html>

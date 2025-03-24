@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+      const result = document.getElementById('result');
+      const itemList = [200,300,150,350]
+      const tax = 1.1;
+
+      itemList.forEach((item, index, array) => {
+        const itemTaxIncluded = Math.floor(item * tax);
+        const p = document.createElement('p');
+        result.append(p);
+        p.innerText = itemTaxIncluded;
+        if(index === array.length - 1) {
+          const p = document.createElement('p');
+          result.append(p);
+          p.innerText = `${itemList.length}点のお買い上げです！`;
+        };
+      });
+    </script>
+</body>
+</html>
