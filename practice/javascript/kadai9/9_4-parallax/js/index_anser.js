@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     //  ハンバガーメニュー ここから --------------------------------------------
-    const menuBtn = document.getElementById("menu-button");
-    const menuNav = document.getElementById("menu");
-    const menuContent = document.querySelector("ul");
+    const menuBtn = document.querySelector(".js-menu-button");
+    const menuNav = document.querySelector("js-menu");
+    const menuContent = document.querySelector(".js-menu__list");
 
     // ハンバーガーメニューの開閉
     function toggleMenu() {
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //  ハンバガーメニュー ここまで --------------------------------------------
     // タブ切り替え ここから --------------------------------------------
-    const tabButtons = document.querySelectorAll(".tab-button");
-    const tabPanels = document.querySelectorAll(".tab-panel");
+    const tabButtons = document.querySelectorAll(".js-tab-button");
+    const tabPanels = document.querySelectorAll(".js-tab-panel");
 
     tabButtons.forEach((tabButton, index) => {
         tabButton.addEventListener("click", () => {
@@ -47,8 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // タブ切り替え ここまで --------------------------------------------
     // アコーディオン ここから --------------------------------------------
-    const accordionButtons = document.querySelectorAll(".accordion-button");
-    const accordionPanels = document.querySelectorAll(".accordion-panel");
+    const accordionButtons = document.querySelectorAll(".js-accordion-button");
+    const accordionPanels = document.querySelectorAll(".js-accordion-panel");
 
     accordionButtons.forEach((accordionButton, index) => {
         accordionButton.addEventListener("click", () => {
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const sectionParallax = () => {
-        const parallaxSections = document.querySelectorAll(".parallax-section");
+        const parallaxSections = document.querySelectorAll(".js-parallax-section");
         parallaxSections.forEach((parallaxSection) => {
             if (inViewport(parallaxSection)) {
                 parallaxSection.classList.add("visualization");

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="./css/reset.css">
 
   <!-- メインCSS -->
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style_anser.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- ページタイトル -->
@@ -36,90 +36,90 @@
 </head>
 <body>
   <!-- ヘッダー -->
-  <header>
-    <h1>企業ロゴ</h1>
-    <button id="menu-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="menu">
-      <span class="menu-line"></span>
-      <span class="menu-text">Menu</span>
+  <header class="l-header">
+    <h1 class="m-logo">企業ロゴ</h1>
+    <button class="m-menu-button js-menu-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="menu">
+      <span class="m-menu-button__line"></span>
+      <span class="m-menu-button_text">Menu</span>
     </button>
-    <nav id="menu">
-      <ul>
-        <li><a href="./">ホーム</a></li>
-        <li><a href="./">私たちについて</a></li>
-        <li><a href="./">事業内容</a></li>
-        <li><a href="./">採用情報</a></li>
-        <li><a href="./">会社概要</a></li>
-        <li><a href="./">お問い合わせ</a></li>
+    <nav id="menu" class="m-menu js-menu">
+      <ul class="m-menu__list js-menu__list">
+        <li class="m-menu__item"><a href="./" class="m-menu__link">ホーム</a></li>
+        <li class="m-menu__item"><a href="./" class="m-menu__link">私たちについて</a></li>
+        <li class="m-menu__item"><a href="./" class="m-menu__link">事業内容</a></li>
+        <li class="m-menu__item"><a href="./" class="m-menu__link">採用情報</a></li>
+        <li class="m-menu__item"><a href="./" class="m-menu__link">会社概要</a></li>
+        <li class="m-menu__item"><a href="./" class="m-menu__link">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- メインコンテンツ -->
-  <main>
-    <section>
-      <h2>タブ切り替え</h2>
-      <div class="tab-button-wrapper">
-          <button id="tab1" class="tab-button" role="tab" aria-selected="true" aria-controls="tab-panel-1" data-tab-target="tab-panel-1">タブ1</button>
-          <button id="tab2" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-2" data-tab-target="tab-panel-2">タブ2</button>
-          <button id="tab3" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-3" data-tab-target="tab-panel-3">タブ3</button>
-          <button id="tab4" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-4" data-tab-target="tab-panel-4">タブ4</button>
+  <main class="l-main">
+    <section class="m-tab">
+      <h2 class="m-tab__title">タブ切り替え</h2>
+      <div class="m-tab__button-wrapper">
+          <button id="tab1" class="m-tab-button js-tab-button" role="tab" aria-selected="true" aria-controls="tab-panel-1" data-tab-target="tab-panel-1">タブ1</button>
+          <button id="tab2" class="m-tab-button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-2" data-tab-target="tab-panel-2">タブ2</button>
+          <button id="tab3" class="m-tab-button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-3" data-tab-target="tab-panel-3">タブ3</button>
+          <button id="tab4" class="m-tab-button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-4" data-tab-target="tab-panel-4">タブ4</button>
       </div>
-      <div class="tab-panel-wrapper">
-      <article id="tab-panel-1" class="tab-panel" role="tabpanel" aria-labelledby="tab1">
-      <h3>1つ目のコンテンツ</h3>
+      <div class="m-tab__panel-wrapper">
+      <article id="tab-panel-1" class="m-tab__panel js-tab-panel" role="tabpanel" aria-labelledby="tab1">
+      <h3 class="m-tab__panel-title">1つ目のコンテンツ</h3>
       <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </article>
-      <article id="tab-panel-2" class="tab-panel is-hidden" role="tabpanel" aria-labelledby="tab2">
-      <h3>2つ目のコンテンツ</h3>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      </article>
-      <article id="tab-panel-3" class="tab-panel is-hidden" role="tabpanel" aria-labelledby="tab3">
-      <h3>3つ目のコンテンツ</h3>
+      <article id="tab-panel-2" class="m-tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab2">
+      <h3 class="m-tab__panel-title">2つ目のコンテンツ</h3>
       <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </article>
-      <article id="tab-panel-4" class="tab-panel is-hidden" role="tabpanel" aria-labelledby="tab4">
-      <h3>4つ目のコンテンツ</h3>
+      <article id="tab-panel-3" class="m-tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab3">
+      <h3 class="m-tab__panel-title">3つ目のコンテンツ</h3>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      </article>
+      <article id="tab-panel-4" class="m-tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab4">
+      <h3 class="m-tab__panel-title">4つ目のコンテンツ</h3>
       <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </article>
     </section>
-    <section class="parallax-section">
-      <h2>アコーディオン</h2>
-      <ul class="accordion-list">
+    <section class="m-accordion js-parallax-section">
+      <h2 class="m-accordion__title">アコーディオン</h2>
+      <ul class="m-accordion__list">
         <li>
-          <button class="accordion-button" aria-controls="accordion-panel-1" aria-expanded="false">
-            <i class="fa-solid fa-caret-right" aria-label="質問"></i>
+          <button class="m-accordion-button js-accordion-button" aria-controls="accordion-panel-1" aria-expanded="false">
+            <i class="m-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
             閉じているラベルをクリックした時は？</button>
-          <div id="accordion-panel-1" class="accordion-panel">
-            <i class="fa-regular fa-face-smile" aria-label="回答"></i>
+          <div id="accordion-panel-1" class="m-accordion__panel js-accordion-panel">
+            <i class="m-panel-icon fa-regular fa-face-smile" aria-label="回答"></i>
             <p>コンテンツが上から下にスライドして表示されます</p>
           </div>
         </li>
         <li>
-          <button class="accordion-button" aria-controls="accordion-panel-2" aria-expanded="false">
-            <i class="fa-solid fa-caret-right" aria-label="質問"></i>
+          <button class="m-accordion-button js-accordion-button" aria-controls="accordion-panel-2" aria-expanded="false">
+            <i class="m-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
             開いているラベルをクリックした時は？</button>
-          <div id="accordion-panel-2" class="accordion-panel">
-            <i class="fa-regular fa-face-smile" aria-label="回答"></i>
+          <div id="accordion-panel-2" class="m-accordion__panel js-accordion-panel">
+            <i class="m-panel-icon fa-regular fa-face-smile" aria-label="回答"></i>
             <p>コンテンツが下から上にスライドして非表示になります</p>
           </div>
         </li>
         <li>
-          <button class="accordion-button" aria-controls="accordion-panel-3" aria-expanded="false">
-            <i class="fa-solid fa-caret-right" aria-label="質問"></i>
+          <button class="m-accordion-button js-accordion-button" aria-controls="accordion-panel-3" aria-expanded="false">
+            <i class="m-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
             テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目</button>
-          <div id="accordion-panel-3" class="accordion-panel">
-            <i class="fa-regular fa-face-smile" aria-label="回答"></i>
+          <div id="accordion-panel-3" class="m-accordion__panel js-accordion-panel">
+            <i class="m-panel-icon fa-regular fa-face-smile" aria-label="回答"></i>
             <p>テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目</p>
           </div>
         </li>
     </ul>
     </section>
-    <section class="parallax-section">
-      <h2>パララックス</h2>
-      <ol class="parallax-cont">
+    <section class="m-parallax js-parallax-section">
+      <h2 class="m-parallax__title">パララックス</h2>
+      <ol class="m-parallax__list">
         <li>各セクションのタイトル部分まで画面をスクロールすると、各セクションが下から上にふわっと表示される。</li>
         <li>画面を下にスクロールすると、トップへ戻るボタンが表示される</li>
         <li>画面が1番上までスクロールされると、トップへ戻るボタンが非表示になる</li>
@@ -140,9 +140,9 @@
   </footer>
 
   <!-- ↓課題※前課題のanser引き継ぎ -->
-  <script src="./js/index.js"></script>
+  <!-- <script src="./js/index.js"></script> -->
   <!-- ↓課題解答(AIに尋ねつつ) -->
-  <!-- <script src="./js/index_anser.js"></script> -->
+  <script src="./js/index_anser.js"></script>
 
 </body>
 </html>

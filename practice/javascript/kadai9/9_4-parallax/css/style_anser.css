@@ -14,7 +14,7 @@ body {
 
 
 /* ヘッダー */
-header {
+.l-header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -28,14 +28,14 @@ header {
     height: 56px;
 }
 
-h1 {
+.m-logo {
     font-size: 1.2rem;
     margin: 0;
     padding: 0.8rem;
 }
 
 /* ハンバーガーメニューボタン */
-#menu-button {
+.m-menu-button {
     background: none;
     border: none;
     font-size: 0.8rem;
@@ -52,7 +52,7 @@ h1 {
     z-index: 1;
 }
 
-.menu-line {
+.m-menu-button__line {
     display: block;
     position: relative;
     margin-top: -28%;
@@ -80,12 +80,12 @@ h1 {
     }
 }
 
-.menu-text {
+.m-menu-button_text {
     position: absolute;
     bottom: 2px;
 }
 
-#menu-button[aria-expanded="true"] .menu-line {
+.m-menu-button[aria-expanded="true"] .menu-m-menu-button__line {
     height: 0;
 
     &::before {
@@ -100,7 +100,7 @@ h1 {
 }
 
 /* ナビゲーションメニュー */
-#menu {
+.m-menu {
     position: fixed;
     top: 0;
     right: 0;
@@ -111,7 +111,7 @@ h1 {
     transition: transform 0.5s ease;
 }
 
-#menu ul {
+.m-menu__list {
     list-style: none;
     margin: 0 0 0 auto;
     padding: 4rem 1rem 1rem;
@@ -122,22 +122,22 @@ h1 {
     transform: translateX(100vw);
 }
 
-#menu.active {
+.m-menu.active {
     display: block;
     transform: translateX(0);
 }
 
-#menu.active ul {
+.m-menu.active .m-menu__list {
     right: 0;
     transition: transform 0.5s ease;
     transform: translateX(0);
 }
 
-#menu li {
+.m-menu__item {
     margin: 0.5rem 0;
 }
 
-#menu a {
+.m-menu__link {
     color: #333;
     text-decoration: none;
     display: block;
@@ -145,21 +145,25 @@ h1 {
     transition: background-color 0.5s;
 }
 
-#menu a:hover {
+.m-menu__link:hover {
     background-color: #f5f5f5;
 }
 
 /* メインコンテンツ */
-main {
+.l-main {
     padding: 2rem;
 }
 
-section {
+.m-tab,
+.m-accordion,
+.m-parallax {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-h2 {
+.m-tab__title,
+.m-accordion__title,
+.m-parallax__title {
     margin: 4rem auto 1rem;
     width: 100%;
     max-width: var(--container-width);
@@ -167,13 +171,13 @@ h2 {
 }
 
 /* タブ切り替え */
-.tab-button-wrapper,
-.tab-panel {
+.m-tab__button-wrapper,
+.m-tab__panel {
     margin-inline: auto;
     width: 100%;
     max-width: var(--container-width);
 }
-.tab-button {
+.m-tab-button {
     width: calc((100% / 4) - 8px);
     max-width: 144px;
     padding-block: 0.6rem;
@@ -192,39 +196,39 @@ h2 {
 
     }
 }
-.tab-panel-wrapper {
+.m-tab__panel-wrapper {
     display: grid;
 }
-.tab-panel {
+.m-tab__panel {
     grid-area: 1 / 1;
     padding: 1.6rem 1.2rem;
     border: 1px solid #666;
     border-radius: 0 3px 3px 3px;
     opacity: 1;
     transition: opacity 0.5s ease;
-    & h3 {
+    & .m-tab__panel-title {
         margin-bottom: 0.6rem;
     }
 }
-.tab-panel.is-hidden {
+.m-tab__panel.is-hidden {
     opacity: 0;
 }
 
 /* アコーディオン */
-.accordion-list {
+.m-accordion__list {
     margin-inline: auto;
     padding: 0;
     width: 100%;
     max-width: var(--container-width);
 }
-.accordion-button,
-.accordion-panel {
+.m-accordion-button,
+.m-accordion__panel {
     width: 100%;
 }
-.accordion-list {
+.m-accordion__list {
     list-style: none;
 }
-.accordion-button {
+.m-accordion-button {
     display: flex;
     gap: 0.4rem;
     margin-bottom: 0.6rem;
@@ -239,12 +243,12 @@ h2 {
         background-color: hsl(0, 0%, 85%);
     }
 }
-.accordion-button i,
-.accordion-panel i {
+.m-accordion-icon,
+.m-panel-icon {
     width: 16px;
     padding-top: 0.25rem;
 }
-.accordion-panel {
+.m-accordion__panel {
     display: flex;
     gap: 0.4rem;
     height: 0;
@@ -267,7 +271,7 @@ h2 {
     opacity: 1;
     transform: translateY(0%);
 }
-.parallax-cont {
+.m-parallax__list {
     margin-inline: auto;
     width: 100%;
     max-width: var(--container-width);
@@ -335,7 +339,7 @@ footer a:hover {
 
 /* レスポンシブデザイン */
 @media (width > 768px) {
-    #menu {
+    .m-menu {
         position: static;
         display: block;
         box-shadow: none;
@@ -346,7 +350,7 @@ footer a:hover {
         background-color: #fff;
     }
 
-    #menu ul {
+    .m-menu__list {
         display: flex;
         gap: 2rem;
         transform: translateX(0);
@@ -355,16 +359,16 @@ footer a:hover {
         padding: 0;
     }
 
-    #menu-button {
+    .m-menu-button {
         display: none;
     }
 
-    header {
+    .l-header {
         height: 72px;
         padding: 0.5rem 1rem;
     }
 
-    main {
+    .l-main {
         margin-top: 2.8rem;
     }
 }
