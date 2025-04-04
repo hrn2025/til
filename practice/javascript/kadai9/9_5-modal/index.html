@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="サイトの概要">
+  <meta name="author" content="会社名">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph Protocol (SNSでシェアされたときの情報) -->
+  <meta property="og:title" content="ページタイトル">
+  <meta property="og:description" content="ページの説明文">
+  <meta property="og:image" content="./path/to/og-image.jpg">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ページタイトル">
+  <meta name="twitter:description" content="ページの説明文">
+  <meta name="twitter:image" content="/path/to/twitter-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+  <!-- CSSリセット -->
+  <link rel="stylesheet" href="./css/reset.css">
+
+  <!-- メインCSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- ページタイトル -->
+  <title>サイト名 - ページタイトル</title>
+</head>
+
+<body>
+  <!-- ヘッダー -->
+  <header class="l-header">
+    <h1 class="logo">企業ロゴ</h1>
+    <button class="menu-button js-menu-button" aria-label="メニューを開く" aria-expanded="false" aria-controls="menu">
+      <span class="menu-button__line"></span>
+      <span class="menu-button__text">Menu</span>
+    </button>
+    <nav id="menu" class="menu js-menu">
+      <ul class="menu__list js-menu__list">
+        <li class="menu__item"><a href="#" class="menu__link">ホーム</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">私たちについて</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">事業内容</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">採用情報</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">会社概要</a></li>
+        <li class="menu__item"><a href="#" class="menu__link">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="l-main">
+    <section class="tab">
+      <h2 class="tab__title">タブ切り替え</h2>
+      <div class="tab__button-wrapper">
+        <button id="tab1" class="tab__button js-tab-button" role="tab" aria-selected="true" aria-controls="tab-panel-1"
+          data-tab-target="tab-panel-1">タブ1</button>
+        <button id="tab2" class="tab__button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-2"
+          data-tab-target="tab-panel-2">タブ2</button>
+        <button id="tab3" class="tab__button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-3"
+          data-tab-target="tab-panel-3">タブ3</button>
+        <button id="tab4" class="tab__button js-tab-button" role="tab" aria-selected="false" aria-controls="tab-panel-4"
+          data-tab-target="tab-panel-4">タブ4</button>
+      </div>
+      <div class="tab__panel-wrapper">
+        <article id="tab-panel-1" class="tab__panel js-tab-panel" role="tabpanel" aria-labelledby="tab1">
+          <h3 class="tab__panel-title">1つ目のコンテンツ</h3>
+          <p>
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          </p>
+        </article>
+        <article id="tab-panel-2" class="tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab2">
+          <h3 class="tab__panel-title">2つ目のコンテンツ</h3>
+          <p>
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          </p>
+          <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        </article>
+        <article id="tab-panel-3" class="tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab3">
+          <h3 class="tab__panel-title">3つ目のコンテンツ</h3>
+          <p>
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          </p>
+          <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        </article>
+        <article id="tab-panel-4" class="tab__panel js-tab-panel is-hidden" role="tabpanel" aria-labelledby="tab4">
+          <h3 class="tab__panel-title">4つ目のコンテンツ</h3>
+          <p>
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          </p>
+          <p>テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        </article>
+    </section>
+    <section class="accordion js-parallax-section">
+      <h2 class="accordion__title">アコーディオン</h2>
+      <ul class="accordion__list">
+        <li>
+          <button class="accordion__button js-accordion-button" aria-controls="accordion-panel-1" aria-expanded="false">
+            <i class="accordion__icon js-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
+            閉じているラベルをクリックした時は？</button>
+          <div id="accordion-panel-1" class="accordion__panel js-accordion-panel">
+            <i class="panel__icon fa-regular fa-face-smile" aria-label="回答"></i>
+            <p>コンテンツが上から下にスライドして表示されます</p>
+          </div>
+        </li>
+        <li>
+          <button class="accordion__button js-accordion-button" aria-controls="accordion-panel-2" aria-expanded="false">
+            <i class="accordion__icon js-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
+            開いているラベルをクリックした時は？</button>
+          <div id="accordion-panel-2" class="accordion__panel js-accordion-panel">
+            <i class="panel__icon fa-regular fa-face-smile" aria-label="回答"></i>
+            <p>コンテンツが下から上にスライドして非表示になります</p>
+          </div>
+        </li>
+        <li>
+          <button class="accordion__button js-accordion-button" aria-controls="accordion-panel-3" aria-expanded="false">
+            <i class="accordion__icon js-accordion-icon fa-solid fa-caret-right" aria-label="質問"></i>
+            テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目</button>
+          <div id="accordion-panel-3" class="accordion__panel js-accordion-panel">
+            <i class="panel__icon fa-regular fa-face-smile" aria-label="回答"></i>
+            <p>
+              テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目テキスト量が多い時の見た目
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="parallax js-parallax-section">
+      <h2 class="parallax__title">パララックス</h2>
+      <ol class="parallax__list">
+        <li>各セクションのタイトル部分まで画面をスクロールすると、各セクションが下から上にふわっと表示される。</li>
+        <li>画面を下にスクロールすると、トップへ戻るボタンが表示される</li>
+        <li>画面が1番上までスクロールされると、トップへ戻るボタンが非表示になる</li>
+      </ol>
+    </section>
+    <section class="modal js-modal js-parallax-section">
+      <h2 class="modal__title">モーダル</h2>
+      <div class="modal__button-wrapper">
+        <button class="modal__button-open js-modal-button-open" aria-controls="modal__panel">モーダルを開く</button>
+      </div>
+      <div id="modal__panel" class="modal__panel js-modal-panel">
+        <div class="modal__list-wrapper js-modal-list-wrapper">
+          <button class="modal__button-close-x js-modal-button-close-x" aria-controls="modal__panel" aria-level="モーダルを閉じる">
+            <i class="modal__icon fa-2x fa-solid fa-xmark"></i>
+          </button>
+          <ol class="modal__list">
+            <li>モーダルが非表示の時、「開く」ボタンを押すとモーダルが表示される</li>
+            <li>モーダルが表示されている時、「閉じる」ボタンを押すとモーダルが非表示になる</li>
+            <li>モーダル上部にあるバツ印を押すとモーダルが非表示になる</li>
+          </ol>
+          <button class="modal__button-close js-modal-button-close" aria-controls="modal__panel">モーダルを閉じる</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <div id="page-top" class="is-hidden"><a href="#"><i class="fa-2x fa-solid fa-circle-arrow-up"></i><span>Top</span></a>
+  </div>
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="./">プライバシーポリシー</a></li>
+        <li><a href="./">利用規約</a></li>
+      </ul>
+      <p>&copy; 20xx 会社名. All rights reserved.</p>
+    </nav>
+  </footer>
+
+  <!-- ↓課題※前課題のanser引き継ぎ -->
+  <script src="./js/index.js"></script>
+  <!-- ↓課題解答(AIに尋ねつつ) -->
+  <!-- <script src="./js/index_anser.js"></script> -->
+
+</body>
+
+</html>

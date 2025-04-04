@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (menuBtn) {
         menuBtn.addEventListener("click", toggleMenu);
-    };
+    }
 
     // ハンバーガーメニュー外やメニューリンクをクリックしてもメニューを閉じる
     menuNav.addEventListener("click", (event) => {
         if (
             event.target === menuNav ||
             !menuContent.contains(event.target) ||
-            event.target.closest('.menu__link')
+            event.target.closest(".menu__link")
         ) {
             toggleMenu();
         }
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleMenu();
         }
     });
-
     //  ハンバガーメニュー ここまで --------------------------------------------
     // タブ切り替え ここから --------------------------------------------
     const tabButtons = document.querySelectorAll(".js-tab-button");
@@ -59,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const panel = accordionPanels[index];
             if (panel.style.height) {
                 panel.style.height = null;
-              } else {
+            } else {
                 panel.style.height = panel.scrollHeight + 40 + "px";
-              };
+            }
 
             const accordionIsExpanded =
                 accordionButton.getAttribute("aria-expanded") === "true";
@@ -74,41 +73,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // アコーディオン ここまで --------------------------------------------
     // パララックス ここから --------------------------------------------
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-active");
+                }
+            });
+        },
+        {
+            threshold: 0.2,
+            rootMargin: "0px 0px -100px 0px",
+        }
+    );
 
-    // 要素がViewportに現れたらtrueを返す関数
-    // const inViewport = (elem) => {
-    //     const rect = elem.getBoundingClientRect(); // 要素のビューポート基準の位置とサイズ情報を返すメソッド
-    //     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    //     // 要素の上部がビューポートの下部よりも上にある（つまり少なくとも上部が見えている）
-    //     return rect.top <= windowHeight * 0.8; // 画面の80%の位置で発火
-    // };
-
-    // const sectionParallax = () => {
-    //     const parallaxSections = document.querySelectorAll(".js-parallax-section");
-    //     parallaxSections.forEach((parallaxSection) => {
-    //         if (inViewport(parallaxSection)) {
-    //             parallaxSection.classList.add("is-active");
-    //         }
-    //     });
-    // };
-    const observer = new IntersectionObserver((entries) => {
-
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-active');
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px"
-    });
-
-    document.querySelectorAll('.js-parallax-section').forEach(el =>{
+    document.querySelectorAll(".js-parallax-section").forEach((el) => {
         observer.observe(el);
     });
     // パララックス ここまで --------------------------------------------
     // トップへ戻るボタン ここから --------------------------------------------
-    const pageTop = document.getElementById('page-top');
+    const pageTop = document.getElementById("page-top");
     let lastScrollY = 0;
 
     window.addEventListener("scroll", () => {
@@ -117,14 +101,46 @@ document.addEventListener("DOMContentLoaded", () => {
         // トップボタンの表示/非表示
         if (currentScrollY === 0) {
             // ページ最上部ならボタンを非表示
-            pageTop.classList.add('is-hidden');
+            pageTop.classList.add("is-hidden");
         } else {
             // それ以外ではボタンを表示
-            pageTop.classList.remove('is-hidden');
-        };
+            pageTop.classList.remove("is-hidden");
+        }
         // 現在のスクロール位置を保存（次回のスクロール方向判定用）
         lastScrollY = currentScrollY;
     });
-
     // トップへ戻るボタン ここまで --------------------------------------------
+    // モーダル ここから --------------------------------------------
+    const modal = document.querySelector('.js-modal');
+    const modalButtonOpen = document.querySelector('.js-modal-button-open');
+    const modalButtonCloseX = document.querySelector('.js-modal-button-close-x');
+    const modalButtonClose = document.querySelector('.js-modal-button-close');
+    const modalPanel = document.querySelector('.js-modal-panel');
+    const modalListWrap = document.querySelector('.js-modal-list-wrapper');
+
+    //もっと明示的に、関数名をわかりやすく修正、パララックスの処理を分けられるよう考える
+    const toggleBodyOverflow = () => {
+        if (modalPanel.classList.contains('is-active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        };
+    };
+    const modalClose = (elem) => {
+        elem.addEventListener('click', () => {
+            modal.classList.remove('js-parallax-section');
+            modalPanel.classList.toggle('is-active');
+            toggleBodyOverflow();
+        });
+    };
+    modalClose(modalButtonOpen);
+    modalClose(modalButtonClose);
+    modalClose(modalButtonCloseX);
+    modalPanel.addEventListener('click', (event) => {
+        if (!modalListWrap.contains(event.target)) {
+            modalPanel.classList.toggle('is-active');
+            toggleBodyOverflow();
+        }
+    });
+    // モーダル ここまで --------------------------------------------
 });

@@ -21,7 +21,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 999;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,12 +122,14 @@ body {
     background-color: #fff;
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overscroll-behavior-y: contain;
+    overflow-y: auto;
 }
 
 .menu.is-active {
     opacity: 1;
     visibility: visible;
-    background-color: hsl(0deg 0% 0% / 45%);
+    background-color: hsla(0, 0%, 0%, 45%);
 }
 
 .menu.is-active .menu__list {
@@ -157,14 +159,16 @@ body {
 
 .tab,
 .accordion,
-.parallax {
+.parallax,
+.modal {
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .tab__title,
 .accordion__title,
-.parallax__title {
+.parallax__title,
+.modal__title {
     margin: 4rem auto 1rem;
     width: 100%;
     max-width: var(--container-width);
@@ -256,7 +260,6 @@ body {
 .accordion__icon,
 .panel__icon {
     width: 16px;
-    padding-top: 0.25rem;
 }
 
 .accordion__panel {
@@ -312,6 +315,90 @@ body {
 }
 #page-top a:hover {
     transform:rotateY(360deg);
+}
+
+/* モーダル */
+.modal {
+    overflow: hidden;
+}
+.modal__button-wrapper {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--container-width);
+}
+.modal__button-open,
+.modal__button-close {
+    display: block;
+    cursor: pointer;
+    padding: 0.8rem 1.6rem;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 20%);
+    transition: background-color 0.3s ease-out;
+}
+.modal__button-close {
+    margin: 2.4rem auto 1rem;
+}
+.modal__button-open:hover,
+.modal__button-close:hover {
+    cursor: pointer;
+    padding: 0.8rem 1.6rem;
+    color: #fff;
+    background-color: hsl(0, 0%, 40%);
+}
+.modal__button-close-x {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+}
+.modal__icon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.modal__button-close-x:hover .modal__icon::before {
+    color: hsl(0, 0%, 20%);
+}
+.modal__panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 calc(50% - 50vw);
+    width: 100dvw;
+    height: 100dvh;
+    background-color: hsla(0, 0%, 0%, 45%);
+    box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.12%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+    z-index: 1000;
+}
+.modal__panel.is-active {
+    visibility: visible;
+    opacity: 1;
+}
+.modal__list-wrapper {
+    position: relative;
+    width: 82%;
+    padding: 3.2rem 1.4rem 1rem;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.modal__list {
+    margin: 0;
+    padding-left: 1.2rem;
 }
 
 /* フッター */
@@ -380,5 +467,10 @@ footer a:hover {
 
     .l-main {
         margin-top: 2.8rem;
+    }
+
+    .modal__list-wrapper {
+        width: 64%;
+        padding: 2.4rem 3.6rem;
     }
 }
