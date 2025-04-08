@@ -1,0 +1,251 @@
+@charset "utf-8";
+
+/* 全体のスタイル */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* フォームスタイル */
+#form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.form__group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form__label {
+    display: block;
+    width: 136px;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form__input,
+.form__checkbox {
+    padding: 0.4rem;
+    border: 1px solid #666;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form__input:focus,
+.form__checkbox:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.form__input::placeholder {
+    color: #999;
+}
+
+textarea.form__input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.required {
+    color: #e74c3c;
+    margin-left: 0.25rem;
+}
+
+.postal__input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.postal__message {
+    font-size: 0.8rem;
+}
+
+.form__submit {
+    display: block;
+    min-width: 36%;
+    margin: 1rem auto;
+    padding: 1rem;
+    background-color: #ccc;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.form__submit:not(:disabled) {
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+}
+
+.form__submit:not(:disabled):hover {
+    background-color: #357abd;
+}
+
+.form__submit:not(:disabled):focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* アクセシビリティ対応 */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* エラー状態 */
+.form__error {
+    display: none;
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+    min-height: 1.2rem;
+}
+
+.form__error.is-error {
+    display: block;
+}
+
+.form__input.is-invalid,
+.form__checkbox.is-invalid {
+    border-color: #e74c3c;
+    background-color: #fff;
+}
+
+.form__input.is-invalid:focus,
+.form__checkbox.is-invalid:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.form__input-wrapper {
+    position: relative;
+}
+
+.form__input-wrapper:has(#address) {
+    flex: 1;
+    width: 100%;
+}
+
+#address {
+    width: 100%;
+}
+
+/* 同意チェックボックスのエラー状態 */
+.form__group-agree {
+    margin: 2rem auto 0;
+}
+
+.form__agree-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form__agree input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+#agree-error {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 0.8rem;
+}
+
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+    .form {
+        padding: 1rem;
+    }
+
+    .form__input {
+        font-size: 16px;
+        /* iOSでズームを防ぐ */
+        max-width: 100%;
+    }
+    .form__group {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form__label {
+        width: 100%;
+    }
+}
+
+/* .form__input[title] {
+    position: relative;
+}
+
+.form__input[title]:hover::after,
+.form__input[title]:focus::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form__input[title]:hover::after,
+.form__input[title]:focus::after {
+    opacity: 1;
+}
+
+.form__input[title]::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form__input[title]:hover::before,
+.form__input[title]:focus::before {
+    opacity: 1;
+}
+
+.form__input.is-invalid[title]::after {
+    background-color: #e74c3c;
+}
+
+.form__input.is-invalid[title]::before {
+    border-color: transparent transparent #e74c3c transparent;
+} */

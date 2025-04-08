@@ -121,29 +121,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalPanel = document.querySelector('.js-modal-panel');
     const modalListWrap = document.querySelector('.js-modal-list-wrapper');
 
+    // モーダル内のフォーカス操作に関する変数
+    const modalFocusElements = modalListWrap.querySelectorAll('button, [href], select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusElem = modalFocusElements[0];
+    const lastFocusElem = modalFocusElements[modalFocusElements.length - 1];
+
     const modalOpen = () => {
-        if(!modalPanel.classList.contains('is-active')) {
-            modal.classList.remove('js-parallax-section');
+        if(modalPanel && !modalPanel.classList.contains('is-active')) {
+            // パララックス効果を一時的に無効化
+            if (modal) modal.classList.remove('js-parallax-section');
             modalPanel.classList.add('is-active');
             document.body.style.overflow = 'hidden';
+        };
+        // フォーカスを最初のフォーカス可能な要素へ移動
+        if (modalFocusElements.length > 0) {
+            firstFocusElem.focus();
         };
     };
 
     const modalClose = () => {
-        if(modalPanel.classList.contains('is-active')) {
+        if(modalPanel && modalPanel.classList.contains('is-active')) {
             modalPanel.classList.remove('is-active');
             document.body.style.overflow = '';
+            // パララックス効果を元に戻す
+            if (modal) modal.classList.add('js-parallax-section');
+            // フォーカスを「開く」ボタンに戻す
+            if (modalButtonOpen) modalButtonOpen.focus();
         };
     };
 
-    modalButtonOpen.addEventListener('click', modalOpen);
-    modalButtonClose.addEventListener('click', modalClose);
-    modalButtonCloseX.addEventListener('click', modalClose);
-    modalPanel.addEventListener('click', (event) => {
-        if (!modalListWrap.contains(event.target)) {
+    if (modalButtonOpen) modalButtonOpen.addEventListener('click', modalOpen);
+    if (modalButtonClose) modalButtonClose.addEventListener('click', modalClose);
+    if (modalButtonCloseX) modalButtonCloseX.addEventListener('click', modalClose);
+    // モーダル外をクリックした場合もモーダルを閉じる
+    if (modalPanel) {
+        modalPanel.addEventListener('click', (event) => {
+            if (modalListWrap && !modalListWrap.contains(event.target)) {
+                modalClose();
+            }
+        });
+    }
+    // モーダル内でのキー操作
+    document.addEventListener('keydown', (event) => {
+        // Escapeキーで閉じる
+        if (event.key === 'Escape' && modalPanel && modalPanel.classList.contains('is-active')) {
             modalClose();
-        }
+        };
+        // モーダル内でのみTabキーが移動するようにする
+        if (event.key === 'Tab' && modalPanel && modalPanel.classList.contains('is-active')) {
+            if (event.shiftKey) { // Shift + Tab
+                if (document.activeElement === firstFocusElem) {
+                    lastFocusElem.focus();
+                    event.preventDefault();
+                };
+            } else { // Tab
+                if (document.activeElement === lastFocusElem) {
+                    firstFocusElem.focus();
+                    event.preventDefault();
+                };
+            };
+        };
     });
-
     // モーダル ここまで --------------------------------------------
 });

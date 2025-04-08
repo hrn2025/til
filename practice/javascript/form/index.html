@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="サイトの概要">
+  <meta name="author" content="会社名">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph Protocol (SNSでシェアされたときの情報) -->
+  <meta property="og:title" content="ページタイトル">
+  <meta property="og:description" content="ページの説明文">
+  <meta property="og:image" content="./path/to/og-image.jpg">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ページタイトル">
+  <meta name="twitter:description" content="ページの説明文">
+  <meta name="twitter:image" content="/path/to/twitter-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+  <!-- CSSリセット -->
+  <link rel="stylesheet" href="./css/reset.css">
+
+  <!-- メインCSS -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- ページタイトル -->
+  <title>サイト名 - ページタイトル</title>
+</head>
+
+<body>
+<form action="POST" id="form">
+  <div class="form__group">
+    <label for="name" class="form__label">
+      お名前
+      <span class="required" aria-hidden="true">*</span>
+      <span class="visually-hidden">（必須）</span>
+    </label>
+    <div class="form__input-wrapper">
+      <input type="text" id="name" name="name" size="30" class="form__input" required aria-describedby="name-error">
+      <p id="name-error" class="form__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="form__group">
+    <label for="furigana" class="form__label">
+      ふりがな
+      <span class="required" aria-hidden="true">*</span>
+      <span class="visually-hidden">（必須）</span>
+    </label>
+    <div class="form__input-wrapper">
+      <input type="text" id="furigana" name="furigana" size="30" class="form__input" required aria-describedby="furigana-error">
+      <p id="furigana-error" class="form__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="form__group">
+    <label for="email" class="form__label">
+      メールアドレス
+      <span class="required" aria-hidden="true">*</span>
+      <span class="visually-hidden">（必須）</span>
+    </label>
+    <div class="form__input-wrapper">
+      <input type="email" id="email" name="email" size="40" class="form__input" required aria-describedby="email-error">
+      <p id="email-error" class="form__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="form__group">
+    <label for="postal" class="form__label">
+      郵便番号
+      <span class="required" aria-hidden="true">*</span>
+      <span class="visually-hidden">（必須）</span>
+    </label>
+    <div class="form__input-wrapper">
+        <div class="postal__input-wrapper">
+      <input type="text" id="postal" name="postal" size="4" inputmode="numeric" class="form__input" placeholder="8100001" pattern="[0-9]{7}" required aria-describedby="postal-message postal-error">
+      <p class="postal__message">※-(ハイフン)無し、半角数字7桁で入力</p></div>
+      <p id="postal-error" class="form__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="form__group">
+    <label for="address" class="form__label">
+      住所
+      <span class="required" aria-hidden="true">*</span>
+      <span class="visually-hidden">（必須）</span>
+    </label>
+    <div class="form__input-wrapper">
+      <input id="address" name="address" class="form__input" required aria-describedby="address-error"></input>
+      <p id="address-error" class="form__error" aria-live="polite"></p>
+    </div>
+  </div>
+
+<div class="form__group-agree">
+    <div class="form__agree-wrapper">
+        <input type="checkbox" id="agree" name="agree" class="form__checkbox" required aria-describedby="agree-error">
+        <label class="form__agree">
+            個人情報の取り扱いに同意する
+            <span class="required" aria-hidden="true">*</span>
+            <span class="visually-hidden">（必須）</span>
+        </label>
+    </div>
+    <p id="agree-error" class="form__error" aria-live="polite"></p>
+</div>
+
+  <div class="form__group">
+    <button id="submit" type="submit" class="form__submit" disabled>送信する</button>
+  </div>
+</form>
+
+  <!-- ↓課題※前課題のanser引き継ぎ -->
+  <!-- <script src="./js/index.js"></script> -->
+  <!-- ↓課題解答(AIに尋ねつつ) -->
+  <script src="./js/index_anser.js"></script>
+
+</body>
+
+</html>
