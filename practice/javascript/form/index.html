@@ -44,7 +44,7 @@
       <span class="visually-hidden">（必須）</span>
     </label>
     <div class="form__input-wrapper">
-      <input type="text" id="name" name="name" size="30" class="form__input" required aria-describedby="name-error">
+      <input type="text" id="name" name="name" size="30" class="form__input" required aria-describedby="name-error" autocomplete="name">
       <p id="name-error" class="form__error" aria-live="polite"></p>
     </div>
   </div>
@@ -68,7 +68,7 @@
       <span class="visually-hidden">（必須）</span>
     </label>
     <div class="form__input-wrapper">
-      <input type="email" id="email" name="email" size="40" class="form__input" required aria-describedby="email-error">
+      <input type="email" id="email" name="email" size="40" class="form__input" required aria-describedby="email-error" autocomplete="email">
       <p id="email-error" class="form__error" aria-live="polite"></p>
     </div>
   </div>
@@ -94,7 +94,7 @@
       <span class="visually-hidden">（必須）</span>
     </label>
     <div class="form__input-wrapper">
-      <input id="address" name="address" class="form__input" required aria-describedby="address-error"></input>
+      <input id="address" name="address" class="form__input" required aria-describedby="address-error" autocomplete="address-level1"></input>
       <p id="address-error" class="form__error" aria-live="polite"></p>
     </div>
   </div>
@@ -102,7 +102,7 @@
 <div class="form__group-agree">
     <div class="form__agree-wrapper">
         <input type="checkbox" id="agree" name="agree" class="form__checkbox" required aria-describedby="agree-error">
-        <label class="form__agree">
+        <label for="agree" class="form__agree">
             個人情報の取り扱いに同意する
             <span class="required" aria-hidden="true">*</span>
             <span class="visually-hidden">（必須）</span>

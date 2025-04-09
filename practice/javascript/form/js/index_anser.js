@@ -28,13 +28,16 @@ const formState = {
     }
 };
 
+// 郵便番号の前回値を保存
+let previousPostalValue = '';
+
 // 送信処理
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    
+
     // 送信前に全フィールドの再検証
     const isFormValid = validateAllFields();
-    
+
     if (isFormValid) {
         console.log('送信しました：コンソールログのみ');
         // 実際の送信処理はここに追加
@@ -44,11 +47,11 @@ form.addEventListener('submit', async (event) => {
 // すべてのフィールドを検証する関数
 function validateAllFields() {
     let isValid = true;
-    
+
     // 各必須フィールドの検証
     requiredInputs.forEach(input => {
         const errorElement = document.getElementById(`${input.id}-error`);
-        
+
         // 空のチェック
         if (!input.value.trim()) {
             errorElement.textContent = '必須項目のためご入力ください。';
@@ -58,7 +61,7 @@ function validateAllFields() {
             isValid = false;
             return;
         }
-        
+
         // 特定フィールドの追加バリデーション
         switch (input.id) {
             case 'furigana':
@@ -77,7 +80,7 @@ function validateAllFields() {
                 formState.updateState(input.id, true);
         }
     });
-    
+
     // 同意チェックボックスの検証
     if (!agreeCheckbox.checked) {
         agreeError.textContent = '必須項目のためチェックを入れてください。';
@@ -91,16 +94,16 @@ function validateAllFields() {
         agreeCheckbox.classList.remove('is-invalid');
         formState.updateState('agree', true);
     }
-    
+
     return isValid;
 }
 
 // 各入力フィールドのイベントリスナー設定
 requiredInputs.forEach(input => {
     // blurイベントでのバリデーション
-    input.addEventListener('blur', function() {
+    input.addEventListener('blur', function () {
         const errorElement = document.getElementById(`${this.id}-error`);
-        
+
         if (!this.value.trim()) {
             errorElement.textContent = '必須項目のためご入力ください。';
             errorElement.classList.add('is-error');
@@ -121,36 +124,64 @@ requiredInputs.forEach(input => {
     });
 });
 
-// 郵便番号の入力監視（タイプ中）
+// 郵便番号の入力監視
 const postalInput = document.getElementById('postal');
 let postalTimeout;
 
-postalInput.addEventListener('input', function() {
+// フォーカス時に現在の値を保存
+postalInput.addEventListener('focus', function () {
+    previousPostalValue = this.value;
+});
+
+postalInput.addEventListener('input', function () {
     clearTimeout(postalTimeout);
     const errorElement = document.getElementById('postal-error');
-    
-    // 入力が完了してから少し待ってからAPIを呼び出す（連続入力防止）
-    if (this.value.length === 7 && /^[0-9]+$/.test(this.value)) {
-        postalTimeout = setTimeout(() => {
-            postalAPI(this.value);
-        }, 300);
-    }
-    
-    // 入力中の基本バリデーション
-    if (!/^[0-9]*$/.test(this.value)) {
+
+    // 入力中の基本バリデーション（数字のみかチェック）
+    if (this.value && !/^[0-9]*$/.test(this.value)) {
         errorElement.textContent = '半角数字のみ入力してください';
         errorElement.classList.add('is-error');
         this.classList.add('is-invalid');
         formState.updateState('postal', false);
-    } else if (this.value.length > 0 && this.value.length !== 7) {
-        errorElement.textContent = '桁数が7桁ではありません';
-        errorElement.classList.add('is-error');
-        this.classList.add('is-invalid');
-        formState.updateState('postal', false);
-    } else if (this.value.length === 0) {
+    } else {
         errorElement.textContent = '';
         errorElement.classList.remove('is-error');
         this.classList.remove('is-invalid');
+
+        // 7桁の時だけvalidとする
+        formState.updateState('postal', this.value.length === 7);
+
+        // 7桁入力完了時にAPIを呼び出す
+        if (this.value.length === 7) {
+            postalTimeout = setTimeout(() => {
+                // 前回値と異なる場合のみAPIを実行
+                if (this.value !== previousPostalValue) {
+                    postalAPI(this.value);
+                    previousPostalValue = this.value;
+                }
+            }, 300);
+        }
+    }
+});
+
+// 郵便番号のフォーカスが外れた時
+postalInput.addEventListener('blur', function () {
+    const errorElement = document.getElementById('postal-error');
+
+    if (!this.value) {
+        errorElement.textContent = '必須項目のためご入力ください。';
+        errorElement.classList.add('is-error');
+        this.classList.add('is-invalid');
+        formState.updateState('postal', false);
+    } else if (!/^[0-9]+$/.test(this.value)) {
+        errorElement.textContent = '半角数字のみ入力してください';
+        errorElement.classList.add('is-error');
+        this.classList.add('is-invalid');
+        formState.updateState('postal', false);
+    } else if (this.value.length !== 7) {
+        errorElement.textContent = '桁数が7桁ではありません';
+        errorElement.classList.add('is-error');
+        this.classList.add('is-invalid');
         formState.updateState('postal', false);
     } else {
         errorElement.textContent = '';
@@ -228,9 +259,12 @@ const postalValidation = (input, errorElement) => {
         errorElement.classList.remove('is-error');
         input.classList.remove('is-invalid');
         formState.updateState('postal', true);
-        
-        // 郵便番号が7桁入力されたらAPIを実行
-        postalAPI(input.value);
+
+        // 前回と異なる場合のみAPIを実行
+        if (input.value !== previousPostalValue) {
+            postalAPI(input.value);
+            previousPostalValue = input.value;
+        }
         return true;
     }
 };
@@ -246,10 +280,10 @@ const postalAPI = async (value) => {
         try {
             addressInput.placeholder = '検索中...';
             addressError.textContent = '';
-            
+
             const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`);
             const data = await response.json();
-            
+
             if (data.results) {
                 const address1 = data.results[0].address1; // 都道府県
                 const address2 = data.results[0].address2; // 市区町村
@@ -285,12 +319,12 @@ const postalAPI = async (value) => {
 window.addEventListener('DOMContentLoaded', () => {
     // フォームの初期状態設定
     submitButton.disabled = true;
-    
+
     // 初期バリデーションチェック（すでに値が入っている場合のため）
     requiredInputs.forEach(input => {
         if (input.value.trim()) {
             const errorElement = document.getElementById(`${input.id}-error`);
-            
+
             switch (input.id) {
                 case 'furigana':
                     furiganaValidation(input, errorElement);
@@ -300,13 +334,15 @@ window.addEventListener('DOMContentLoaded', () => {
                     break;
                 case 'postal':
                     postalValidation(input, errorElement);
+                    // 初期値を保存
+                    previousPostalValue = input.value;
                     break;
                 default:
                     formState.updateState(input.id, true);
             }
         }
     });
-    
+
     // チェックボックスの初期状態確認
     if (agreeCheckbox.checked) {
         formState.updateState('agree', true);
