@@ -1,0 +1,35 @@
+<h1>try...catchを使ったエラーハンドリングの練習用問題</h1>
+<h2>問題1: ユーザー入力の数値変換</h2>
+<h3>要件</h3>
+<ol>
+    <li>ユーザーに入力を求め（prompt）、数値に変換する関数を作成</li>
+    <li>数値に変換できない場合、エラーを投げて「無効な入力です」と表示</li>
+    <li>正常な数値の場合、その数値の2倍を返す</li>
+</ol>
+<p id="message"></p>
+
+<script>
+    const inputValue = prompt("数値を入力してください");
+    const message = document.getElementById("message");
+
+    const convertToNumber = (value) => {
+        //数値の変換と厳密な判定
+        const number = Number(value);
+        if (isNaN(number) || value.trim() === '') {
+            throw new Error('無効な入力です');
+        }
+
+        return number;
+    }
+
+    const checkNum = (value) => {
+        try {
+            const result = convertToNumber(value);
+            message.textContent = `${result}は数値です。2倍の数値は${result * 2}。`;
+        } catch (error) {
+            message.textContent = error.message;
+            console.error(error.stack);
+        }
+    }
+    checkNum(inputValue);
+</script>

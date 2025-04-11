@@ -1,0 +1,71 @@
+<script>
+// 非同期処理のおすすめ例題
+// 1. コールバック関数を使った例
+// 課題: setTimeoutを使用して、3秒後に「Hello, World!」を表示する関数を書いてみましょう。
+// const mrFunComputer = (message, delay) => {
+//     setTimeout(() => {
+//         console.log(message);
+//     }, delay);
+// };
+// mrFunComputer('Hello!', 3000);
+// 発展課題:複数のsetTimeoutを使って、1秒ごとに「Step 1」「Step 2」「Step 3」と順番に表示させる（コールバック地獄の理解）
+setTimeout(() => {
+    console.log('Hello!')
+    setTimeout(() => {
+        console.log('Would you');
+        setTimeout(() => {
+            console.log('like');
+        }, 1000);
+    }, 1000);
+}, 1000);
+
+// 2. Promiseを使った例
+// 課題: 数値を受け取り、その数値が偶数なら成功、奇数なら失敗するPromiseを作成してください。
+const checkEvenOdd = (num) => {
+    return new Promise ((resolve, reject) => {
+        const result = num % 2 === 0;
+        if (result) {
+            const successMessage = `成功：${num}は偶数です`;
+            resolve(successMessage);
+        } else {
+            const errorMessage = `失敗：${num}は奇数です`;
+            reject(errorMessage);
+        }
+    }, 1000);
+};
+// 発展課題: このPromiseをチェーンして複数回呼び出し、結果を確認する。
+checkEvenOdd(1)
+.then((message) => {// 実行されない
+    console.log(message);
+    return checkEvenOdd(2);
+})
+.then((message) => {// 実行されない
+    console.log(message);
+})
+.catch((error) => {// 実行される：checkEvenOdd(1)の表示
+    console.error(error);
+    return checkEvenOdd(2);
+})
+.then((message) => {// 実行される：checkEvenOdd(2)の表示
+    console.log(message);
+    return checkEvenOdd(4);
+})
+.catch((error) => {// 実行されない
+    console.error(error);
+})
+.then((message) => {// 実行される：checkEvenOdd(4)の表示
+    console.log(message);
+})
+// 3. Async/Awaitを使った例
+// 課題: fetch関数を使用してAPIからデータを取得し、結果をコンソールに表示する。
+async function displayPhotos(url) {
+    try {
+        const result = await fetch(url);
+        const data = await result.json()
+        return console.log(data);
+    } catch (error) {
+        return console.error("Error fetching data:", error);
+    }
+}
+displayPhotos('https://jsonplaceholder.typicode.com/photos');
+</script>
