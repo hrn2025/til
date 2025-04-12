@@ -1,0 +1,95 @@
+<h1>try...catchを使ったエラーハンドリングの練習用問題</h1>
+<h2>問題4: 複数エラーハンドリングの組み合わせ</h2>
+<h3>要件</h3>
+<ol>
+  <li>以下の処理を順次実行</li>
+  <li>各処理で発生する可能性のあるエラーを捕捉
+    <ul>
+      <li>ユーザー認証（authenticate）</li>
+      <li>プロフィール取得（getProfile）</li>
+      <li>設定情報取得（getSettings）</li>
+    </ul>
+  </li>
+  <li>エラー発生箇所を特定してログ出力</li>
+  <li>ヒント：個別のtry/catchブロック vs 単一ブロックの比較</li>
+</ol>
+<p id="message"></p>
+
+<script>
+    // 主な改善ポイント
+    // 処理順序の誤り
+    // getProfileとgetSettingsがauthenticate前に実行されている
+
+    // エラー捕捉の不備
+    // 各処理のエラーを個別に捕捉できていない
+
+    // データ取得の依存関係
+    // プロフィール/設定取得は認証後に実行すべき
+
+    // エラー情報の管理方法
+    // エラー発生箇所の特定が困難
+
+
+    // 模擬関数群
+    async function authenticate() {
+        // throw new Error('認証トークン失効');
+        return true;
+    }
+
+    async function getProfile() {
+        return { name: 'John' };
+    }
+
+    async function getSettings() {
+        return { theme: 'dark' };
+    }
+
+    // ここに解答コードを書いてください
+    async function initializeApp() {
+        // 複数処理の連携とエラーハンドリング
+        const messageElement = document.getElementById('message');
+        const profile = await getProfile();
+        const setting = await getSettings();
+        const userInfos = [];
+        const errors = [];
+        const userElement = document.createElement('p');
+        const errorElement = document.createElement('p');
+
+        try {
+            const userAuthenticate = await authenticate();
+            if (userAuthenticate) {
+                messageElement.textContent = '認証が成功しました';
+                messageElement.style.color = 'green';
+
+                if (profile && profile.name) {
+                    userInfos.push(`プロフィール：${profile.name}`);
+                } else {
+                    errors.push('プロフィール情報を取得できません');
+                }
+
+                if (setting && setting.theme) {
+                    userInfos.push(`設定情報：${setting.theme}`);
+                } else {
+                    errors.push('設定情報を取得できません');
+                }
+
+                if (userInfos.length > 0) {
+                    userElement.innerHTML = `${userInfos.join('</br>')}`;
+                    messageElement.insertAdjacentElement('afterend', userElement);
+                }
+                if (errors.length > 0) {
+                    throw new Error(errors);
+                }
+
+            }
+        } catch (error) {
+            errorElement.innerHTML = error.message.split(',').join('<br>');
+            errorElement.style.color = 'red';
+            messageElement.insertAdjacentElement('afterend', errorElement);
+            console.error(error.message);
+        }
+    }
+
+    initializeApp();
+
+</script>

@@ -1,0 +1,67 @@
+<h1>try...catchを使ったエラーハンドリングの練習用問題</h1>
+<h2>問題3: ファイルアップロードのバリデーション</h2>
+<h3>要件</h3>
+<ol>
+    <li>ファイルオブジェクトを受け取り、以下のチェックを実施
+        <ul>
+            <li>ファイルサイズが5MB以下</li>
+            <li>拡張子が.jpg/.pngのみ許可</li>
+        </ul>
+    </li>
+    <li>エラーハンドリングでカスタムエラーメッセージを表示</li>
+    <li>すべてのチェックを通過したら「アップロード成功」を返す</li>
+</ol>
+<input type="file">
+<p id="message"></p>
+
+
+<script>
+const fileInput = document.querySelector("input[type=file]");
+const message = document.getElementById("message");
+
+class FileValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'FileValidationError';
+  }
+}
+
+fileInput.addEventListener("change", () => {
+    const [file] = fileInput.files;
+    validateFile(file);
+});
+
+//ファイルサイズが5MB以下
+function fileSizeCheck(file) {
+    if(file.size <= 5242880) {
+        return true;
+    } else {
+        throw new FileValidationError("ファイルサイズは5MB以下をアップロードしてください。");
+    }
+}
+//拡張子が.jpg/.pngのみ許可
+function fileTypeCheck(file) {
+    if(file.type === "image/png" || file.type === "image/jpeg") {
+        return true;
+    } else {
+        throw new FileValidationError("jpgまたはpng形式の画像をアップロードしてください。");
+    }
+}
+
+// ここに解答コードを書いてください
+function validateFile(file) {
+  // ファイルチェックとエラーハンドリング
+  try {
+    const fileSize = fileSizeCheck(file);
+    const fileType = fileTypeCheck(file);
+    if(fileSize && fileType) {
+        message.textContent = "アップロード成功";
+    }
+  }
+  catch(error) {
+    message.textContent = error.message;
+    console.error(error.message);
+  }
+}
+
+</script>

@@ -1,0 +1,97 @@
+<h1>try...catchを使ったエラーハンドリングの練習用問題</h1>
+<h2>問題3: ファイルアップロードのバリデーション</h2>
+<h3>要件</h3>
+<ol>
+    <li>ファイルオブジェクトを受け取り、以下のチェックを実施
+        <ul>
+            <li>ファイルサイズが5MB以下</li>
+            <li>拡張子が.jpg/.pngのみ許可</li>
+        </ul>
+    </li>
+    <li>エラーハンドリングでカスタムエラーメッセージを表示</li>
+    <li>すべてのチェックを通過したら「アップロード成功」を返す</li>
+</ol>
+<input type="file">
+<p id="message"></p>
+
+
+<script>
+// 改善ポイント
+// 複数エラー検出機能の不足
+// 現在の実装では最初のエラーで処理が停止し、複数の問題を同時に通知できません
+// 解決策：配列にエラーをpushしてjoinで繋いで表示させる
+
+// MIMEタイプ依存の脆弱性
+// file.typeは改ざん可能なため、拡張子の直接チェックを追加する必要があります
+
+// エラーメッセージの具体性不足
+// ユーザーが問題を正確に把握できる詳細なメッセージが求められます
+
+const fileInput = document.querySelector("input[type=file]");
+const message = document.getElementById("message");
+
+class FileValidationError extends Error {
+  constructor(messages) {
+    super('ファイル検証エラー');
+    this.name = 'FileValidationError';
+    this.messages = messages;
+  }
+}
+
+// ここに解答コードを書いてください
+function validateFile(file) {
+  // ファイルチェックとエラーハンドリング
+  const errors = [];
+  const MAX_SIZE_MB = 5;
+  const ALLOWED_EXTENSIONS = ['jpg','jpeg','png'];
+  const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png']
+
+  //拡張子を取得する関数
+  const getExtension = (fileName) => {
+    return fileName.split('.').pop().toLowerCase();
+  }
+
+  // ファイルサイズチェック
+  if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+    errors.push(`ファイルサイズは${MAX_SIZE_MB}以下にしてください（現在${(file.size/1024/1024).toFixed(2)}MB）`);
+  }
+
+  // MIMEタイプチェック
+  if(!ALLOWED_MIME_TYPES.includes(file.type)) {
+    errors.push(`ファイルは${ALLOWED_EXTENSIONS.join(',')}形式のみ対応可能です`);
+  }
+
+  //拡張子二重チェック
+  const extension = getExtension(file.name);
+  if (!ALLOWED_EXTENSIONS.includes(extension)) {
+    errors.push(`${extension}は無効な拡張子です`)
+  }
+
+  if(errors.length > 0) {
+    throw new FileValidationError(errors);
+  }
+
+  return 'アップロード成功';
+}
+
+fileInput.addEventListener("change", async(event) => {
+    const [file] = event.target.files;
+    if (!file) return;
+    try {
+        const result = validateFile(file);
+        message.textContent = result;
+        message.style.color = 'green';
+    }
+    catch(error) {
+        if (error instanceof FileValidationError) {
+            message.innerHTML = `以下の問題があります:<br>${error.messages.join('<br>')}`;
+        } else {
+            message.textContent = '予期せぬエラーが発生しました';
+        }
+        message.style.color = 'red';
+        console.error(error);
+    }
+});
+
+
+</script>
