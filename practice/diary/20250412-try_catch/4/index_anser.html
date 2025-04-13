@@ -18,7 +18,7 @@
 <script>
     // 主な改善ポイント
     // 処理順序の誤り
-    // getProfileとgetSettingsがauthenticate前に実行されている
+    // getProfileとgetSettingsがauthenticate前に実行されている（移動させてしまった･･反省）
 
     // エラー捕捉の不備
     // 各処理のエラーを個別に捕捉できていない
@@ -37,7 +37,7 @@
     }
 
     async function getProfile() {
-        return { name: 'John' };
+       return { name: 'John' };
     }
 
     async function getSettings() {
@@ -48,45 +48,34 @@
     async function initializeApp() {
         // 複数処理の連携とエラーハンドリング
         const messageElement = document.getElementById('message');
-        const profile = await getProfile();
-        const setting = await getSettings();
-        const userInfos = [];
-        const errors = [];
-        const userElement = document.createElement('p');
-        const errorElement = document.createElement('p');
+        //初期化
+        messageElement.innerHTML = '';
 
         try {
-            const userAuthenticate = await authenticate();
-            if (userAuthenticate) {
-                messageElement.textContent = '認証が成功しました';
-                messageElement.style.color = 'green';
+            const authResult = await authenticate();
+            messageElement.innerHTML = `認証が成功しました<br>`;
 
-                if (profile && profile.name) {
-                    userInfos.push(`プロフィール：${profile.name}`);
-                } else {
-                    errors.push('プロフィール情報を取得できません');
-                }
-
-                if (setting && setting.theme) {
-                    userInfos.push(`設定情報：${setting.theme}`);
-                } else {
-                    errors.push('設定情報を取得できません');
-                }
-
-                if (userInfos.length > 0) {
-                    userElement.innerHTML = `${userInfos.join('</br>')}`;
-                    messageElement.insertAdjacentElement('afterend', userElement);
-                }
-                if (errors.length > 0) {
-                    throw new Error(errors);
-                }
-
+            // プロフィール取得
+            let profile;
+            try {
+                profile = await getProfile();
+                messageElement.innerHTML += `プロフィール取得: ${profile.name}<br>`;
+            } catch (error) {
+                throw new Error(`プロフィール取得失敗: ${error.message}`);
             }
+
+            let settings;
+            try {
+            settings = await getSettings();
+            messageElement.innerHTML += `設定取得: ${settings.theme}<br>`;
+            } catch (error) {
+                throw new Error(`設定取得失敗: ${error.message}`);
+            }
+
         } catch (error) {
-            errorElement.innerHTML = error.message.split(',').join('<br>');
-            errorElement.style.color = 'red';
-            messageElement.insertAdjacentElement('afterend', errorElement);
-            console.error(error.message);
+            messageElement.innerHTML = `エラー発生:<br>${error.message}`;
+            messageElement.style.color = 'red';
+            console.error(`[${new Date().toISOString()}] エラー詳細:`, error.stack);
         }
     }
 
