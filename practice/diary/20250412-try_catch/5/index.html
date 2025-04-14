@@ -1,0 +1,47 @@
+<h1>try...catchを使ったエラーハンドリングの練習用問題</h1>
+<h2>問題5: 再試行ロジックの実装</h2>
+<h3>要件</h3>
+<ol>
+  <li>最大3回までリトライ可能なAPI呼び出し関数を作成</li>
+  <li>エラー発生時に1秒間隔で再試行</li>
+  <li>3回失敗したら最終エラーを投げる</li>
+  <li>ヒント: forループとawaitの組み合わせ</li>
+</ol>
+<p id="message"></p>
+
+<script>
+async function unstableAPI() {
+  return new Promise((resolve, reject) => {
+    const success = Math.random() > 0.5;
+    setTimeout(() => {
+      success ? resolve('成功') : reject('一時的なエラー');
+    }, 300);
+  });
+}
+// ここに解答コードを書いてください
+async function callWithRetry() {
+  // 再試行ロジックの実装
+  const messageElement = document.getElementById('message');
+  const maxRetry = 3;
+
+//エラー発生時に1秒間隔で再試行
+  for (let i = 0; i < maxRetry; i++) {
+    try {
+      const result = await unstableAPI();
+      messageElement.textContent = '取得に成功しました';
+      console.log(result);
+      break;
+    }
+    catch(error) {
+      if(i < maxRetry - 1) {
+        console.error(error, `：リトライします（残り${maxRetry - i - 1}回）`);
+        await new Promise(resolve => {setTimeout(resolve, 1000);});//★JavaScriptで「一定時間待機」を実現する標準的な手法。これは難しい
+      } else {
+        messageElement.textContent = `${maxRetry}回実行しましたが取得に失敗しました`;
+        console.error(`リトライ終了（残り${maxRetry - i - 1}回）`);
+      }
+    }
+};
+}
+callWithRetry();
+</script>
