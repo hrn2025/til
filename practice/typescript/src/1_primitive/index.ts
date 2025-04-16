@@ -9,4 +9,4 @@ const user: null = null;
 
 // 4問目
 const language: string = 'TypeScript';//エラー回避のため変数名変更
-const result: boolean = (language === 'JavaScript');
+const langResult: boolean = (language === 'JavaScript');//エラー回避のため変数名変更

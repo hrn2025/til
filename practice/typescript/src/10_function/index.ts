@@ -14,9 +14,32 @@
 // sum の計算には reduce を使用してもよいです。
 // multiplier が undefined の場合は 10 を掛けて計算してください。
 
+const calculateSumAndAverage = (numbers: number[], multiplier: number = 10) => {
+    type Result = {
+        sum: number;
+        multiplicationResult: number;
+    };
 
-const result = calculateSumAndAverage([1, 2, 3, 4, 5], 2);
-console.log(result); // 出力結果: { sum: 15, multiplicationResult: 30 }
+    const sumResult = numbers.reduce((acc: number, val: number): number => {
+        return acc + val;
+    });
+
+    const multiResult = sumResult * multiplier;
+
+    const resultObj: Result = {
+        sum: sumResult,
+        multiplicationResult: multiResult
+    }
+
+    return resultObj;
+}
+
+
+const result1 = calculateSumAndAverage([1, 2, 3, 4, 5], 2);
+console.log(result1); // 出力結果: { sum: 15, multiplicationResult: 30 }
 
 const result2 = calculateSumAndAverage([1, 2, 3, 4, 5]);
 console.log(result2); // 出力結果: { sum: 15, multiplicationResult: 150 }
+
+const result3 = calculateSumAndAverage([5, 5]);
+console.log(result3); // 出力結果: { sum: 10, multiplicationResult: 100 }
