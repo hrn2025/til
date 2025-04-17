@@ -1,35 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
+$(function() {
     //  ハンバガーメニュー ここから --------------------------------------------
-    const menuBtn = document.querySelector(".js-menu-button");
-    const menuNav = document.querySelector(".js-menu");
-    const menuContent = document.querySelector(".js-menu__list");
+    const $menuBtn = $(".js-menu-button");
+    const $menuNav = $(".js-menu");
+    const $menuContent = $(".js-menu__list");
+    const breakpoint = 768; // スマートフォンとみなす画面幅の閾値 (px)
 
     // ハンバーガーメニューの開閉
     function toggleMenu() {
-        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-        menuBtn.setAttribute("aria-expanded", !isExpanded);
-        menuNav.classList.toggle("is-active");
-        document.body.style.overflow = isExpanded ? "" : "hidden";
+        if (window.innerWidth <= breakpoint) { // スマートフォン以下の場合のみ実行
+        const isExpanded = $menuBtn.attr("aria-expanded") === "true";
+        $menuBtn.attr("aria-expanded", !isExpanded);
+        $menuNav.toggleClass("is-active");
+        $("body").css("overflow", isExpanded ? "" : "hidden");
+        }
     }
-    if (menuBtn) {
-        menuBtn.addEventListener("click", toggleMenu);
+    if ($menuBtn.length) {
+        $menuBtn.on("click", toggleMenu);
     }
 
     // ハンバーガーメニュー外やメニューリンクをクリックしてもメニューを閉じる
-    menuNav.addEventListener("click", (event) => {
-        if (
-            event.target === menuNav ||
-            !menuContent.contains(event.target) ||
-            event.target.closest(".menu__link") &&
-            window.innerWidth <= 768 //スマホ時のみ(CSSのMediaクエリに合わせる)
-        ) {
+    $menuNav.on("click", function(event) {
+        const isClickOutsideMenu = event.target === this;
+        const isClickOutsideContent = $menuContent.has(event.target).length;
+        const isClickOnLink = $(event.target).closest(".menu__link").length;
+
+        if ((isClickOutsideMenu && !isClickOutsideContent) || isClickOnLink) {
             toggleMenu();
         }
     });
 
     // ESCキーでメニューを閉じる
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && menuNav.classList.contains("is-active")) {
+    $(document).on("keydown", function(event) {
+        if (event.key === "Escape" && $menuNav.hasClass("is-active")) {
             toggleMenu();
         }
     });
@@ -50,26 +52,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // タブ切り替え ここまで --------------------------------------------
     // アコーディオン ここから --------------------------------------------
-    const accordionButtons = document.querySelectorAll(".js-accordion-button");
-    const accordionPanels = document.querySelectorAll(".js-accordion-panel");
+    const $accordionButtons = $(".js-accordion-button");
+    const $accordionPanels = $(".js-accordion-panel");
 
-    accordionButtons.forEach((accordionButton, index) => {
-        accordionButton.addEventListener("click", () => {
-            const caretIcon = accordionButton.querySelector(".js-accordion-icon");
-            const panel = accordionPanels[index];
-            if (panel.style.height) {
-                panel.style.height = null;
+    $accordionButtons.each(function(index) {
+        const $accordionButton = $(this);
+        const $caretIcon = $accordionButton.find(".js-accordion-icon");
+        const $panel = $accordionPanels.eq(index);
+
+        $accordionButton.on("click", function() {
+            const isExpanded = $accordionButton.attr("aria-expanded") === "true";
+            $accordionButton.attr("aria-expanded", !isExpanded);
+            $caretIcon.toggleClass("fa-caret-right fa-caret-down");
+            $panel.toggleClass("is-active");
+
+            if (!$panel.hasClass("is-active")) {
+                $panel.css("height", 0);
             } else {
-                panel.style.height = panel.scrollHeight + 40 + "px";
+                $panel.css("height", "auto");
             }
-
-            const accordionIsExpanded =
-                accordionButton.getAttribute("aria-expanded") === "true";
-
-            accordionButton.setAttribute("aria-expanded", !accordionIsExpanded);
-            caretIcon.classList.toggle("fa-caret-right");
-            caretIcon.classList.toggle("fa-caret-down");
-            panel.classList.toggle("is-active");
         });
     });
     // アコーディオン ここまで --------------------------------------------
@@ -144,10 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if(modalPanel && modalPanel.classList.contains('is-active')) {
             modalPanel.classList.remove('is-active');
             document.body.style.overflow = '';
+            // パララックス効果を元に戻す
+            // if (modal) modal.classList.add('js-parallax-section');
             // フォーカスを「開く」ボタンに戻す
             if (modalButtonOpen) modalButtonOpen.focus();
-            // パララックス効果を元に戻す
-            if (modal) setTimeout => modal.classList.add('js-parallax-section'), 1000;
         };
     };
 

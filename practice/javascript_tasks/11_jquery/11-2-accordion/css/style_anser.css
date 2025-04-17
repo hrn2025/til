@@ -1,9 +1,6 @@
 @charset "utf-8";
 
 /* 全体のスタイル */
-html {
-    scrollbar-gutter: stable;
-}
 body {
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     line-height: 1.6;
@@ -261,23 +258,29 @@ body {
         background-color: hsl(0, 0%, 85%);
     }
 }
+
 .accordion__icon,
 .panel__icon {
-    padding-top: 3px;
     width: 16px;
+    padding-top: 0.2rem;
+    float: left; /* display:flex を設定すると意図しない挙動になったためfloatを使用 */
+    margin-right: 0.5rem;
 }
 
 .accordion__panel {
-    display: flex;
-    gap: 0.4rem;
+    display: none;
     height: 0;
-    padding-inline: 1rem;
     overflow: hidden;
-    transition: height 0.3s ease-out, padding 0.3s ease-out;
-    &.is-active {
-        padding: 0.5rem 1rem 2rem;
-        height: auto;
-    }
+    gap: 0.4rem;
+    padding: 0 1rem 2rem;
+}
+
+.accordion__panel p {
+    overflow: auto;
+    margin-block: 0;
+}
+.accordion__button[aria-expanded="true"] + .accordion__panel {
+    height: auto;
 }
 
 /* パララックス */

@@ -1,35 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
+$(function() {
     //  ハンバガーメニュー ここから --------------------------------------------
-    const menuBtn = document.querySelector(".js-menu-button");
-    const menuNav = document.querySelector(".js-menu");
-    const menuContent = document.querySelector(".js-menu__list");
+    const $menuBtn = $(".js-menu-button");
+    const $menuNav = $(".js-menu");
+    const $menuContent = $(".js-menu__list");
+    const breakpoint = 768; // スマートフォンとみなす画面幅の閾値 (px)
 
     // ハンバーガーメニューの開閉
     function toggleMenu() {
-        const isExpanded = menuBtn.getAttribute("aria-expanded") === "true";
-        menuBtn.setAttribute("aria-expanded", !isExpanded);
-        menuNav.classList.toggle("is-active");
-        document.body.style.overflow = isExpanded ? "" : "hidden";
+        if (window.innerWidth <= breakpoint) { // スマートフォン以下の場合のみ実行
+        const isExpanded = $menuBtn.attr("aria-expanded") === "true";
+        $menuBtn.attr("aria-expanded", !isExpanded);
+        $menuNav.toggleClass("is-active");
+        $("body").css("overflow", isExpanded ? "" : "hidden");
+        }
     }
-    if (menuBtn) {
-        menuBtn.addEventListener("click", toggleMenu);
+    if ($menuBtn.length) {
+        $menuBtn.on("click", toggleMenu);
     }
 
     // ハンバーガーメニュー外やメニューリンクをクリックしてもメニューを閉じる
-    menuNav.addEventListener("click", (event) => {
-        if (
-            event.target === menuNav ||
-            !menuContent.contains(event.target) ||
-            event.target.closest(".menu__link") &&
-            window.innerWidth <= 768 //スマホ時のみ(CSSのMediaクエリに合わせる)
-        ) {
+    $menuNav.on("click", function(event) {
+        const isClickOutsideMenu = event.target === this;
+        const isClickOutsideContent = $menuContent.has(event.target).length;
+        const isClickOnLink = $(event.target).closest(".menu__link").length;
+
+        if ((isClickOutsideMenu && !isClickOutsideContent) || isClickOnLink) {
             toggleMenu();
         }
     });
 
     // ESCキーでメニューを閉じる
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && menuNav.classList.contains("is-active")) {
+    $(document).on("keydown", function(event) {
+        if (event.key === "Escape" && $menuNav.hasClass("is-active")) {
             toggleMenu();
         }
     });
@@ -144,10 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if(modalPanel && modalPanel.classList.contains('is-active')) {
             modalPanel.classList.remove('is-active');
             document.body.style.overflow = '';
+            // パララックス効果を元に戻す
+            // if (modal) modal.classList.add('js-parallax-section');
             // フォーカスを「開く」ボタンに戻す
             if (modalButtonOpen) modalButtonOpen.focus();
-            // パララックス効果を元に戻す
-            if (modal) setTimeout => modal.classList.add('js-parallax-section'), 1000;
         };
     };
 
